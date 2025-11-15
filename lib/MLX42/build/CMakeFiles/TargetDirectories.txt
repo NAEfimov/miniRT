@@ -1,0 +1,7 @@
+/home/nefimov/code/miniRT/github/lib/MLX42/build/CMakeFiles/mlx42.dir
+/home/nefimov/code/miniRT/github/lib/MLX42/build/CMakeFiles/edit_cache.dir
+/home/nefimov/code/miniRT/github/lib/MLX42/build/CMakeFiles/rebuild_cache.dir
+/home/nefimov/code/miniRT/github/lib/MLX42/build/CMakeFiles/list_install_components.dir
+/home/nefimov/code/miniRT/github/lib/MLX42/build/CMakeFiles/install.dir
+/home/nefimov/code/miniRT/github/lib/MLX42/build/CMakeFiles/install/local.dir
+/home/nefimov/code/miniRT/github/lib/MLX42/build/CMakeFiles/install/strip.dir
