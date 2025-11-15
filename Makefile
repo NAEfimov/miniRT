@@ -6,8 +6,11 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 SRCS_D	:= ./src
-SRCS	:= main.c	\
-		   mlx_run.c
+SRCS	:= main.c			\
+		   scene_clean.c	\
+		   scene_draw.c 	\
+		   scene_read.c		\
+		   scene_trace.c
 
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))
