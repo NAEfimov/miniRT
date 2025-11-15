@@ -6,12 +6,10 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 SRCS_D	:= ./src
-# list source files relative to $(SRCS_D), for example:
-# SRCS := main.c utils/vec3.c scenes/scene1.c
-SRCS	:= main.c
+SRCS	:= main.c	\
+		   mlx_run.c
 
 OBJS_D	:= ./build
-# map the SRCS list to object files under OBJS_D (preserves subdirs from SRCS entries)
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))
 
 all: $(NAME)
@@ -28,11 +26,13 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -rf $(OBJS_D)
-# 	@rm -rf $(LIBMLX)/build
 
 fclean: clean
 	@rm -rf $(NAME)
 
+mlxclean:
+	@rm -rf $(LIBMLX)/build
+
 re: clean all
 
-.PHONY: all, clean, fclean, re, libmlx
+.PHONY: all, clean, fclean, re, libmlx, mlxclean
