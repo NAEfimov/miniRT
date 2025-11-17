@@ -13,7 +13,8 @@ SRCS	:= main.c \
 		   scene_clean.c \
 		   scene_draw.c \
 		   scene_read.c \
-		   scene_trace.c
+		   scene_trace.c \
+		   check_args.c
 
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))

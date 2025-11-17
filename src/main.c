@@ -5,7 +5,7 @@ int	main(int argc, char *argv[])
 {
 	t_scene	scene;
 	
-	check_args(argv, argc);
+	check_args(argc, argv);
 	read_scene(&scene, argv[1]);
 	trace_scene(&scene);
 	draw_scene(&scene);

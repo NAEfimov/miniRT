@@ -86,6 +86,6 @@ int	draw_scene(t_scene *scene);
 int	clean_scene(t_scene *scene);
 
 // Check_arguments
-int	check_args(int argc, char *argv[]);
+void	check_args(int argc, char **argv);
 
 #endif
