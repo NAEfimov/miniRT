@@ -80,9 +80,12 @@ typedef struct	s_scene
 	int			cyl_num;
 }	t_scene;
 
-int	read_scene(t_scene *scene);
+int	read_scene(t_scene *scene, char *fname);
 int	trace_scene(t_scene *scene);
 int	draw_scene(t_scene *scene);
 int	clean_scene(t_scene *scene);
+
+// Check_arguments
+int	check_args(int argc, char *argv[]);
 
 #endif
