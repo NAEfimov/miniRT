@@ -1,3 +1,6 @@
+#ifndef MAIN_H
+# define MAIN_H
+
 #include <stdint.h>
 
 #define WIDTH		256
@@ -81,3 +84,5 @@ int	read_scene(t_scene *scene);
 int	trace_scene(t_scene *scene);
 int	draw_scene(t_scene *scene);
 int	clean_scene(t_scene *scene);
+
+#endif
