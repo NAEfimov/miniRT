@@ -6,7 +6,7 @@
 #    By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/17 19:30:07 by nefimov           #+#    #+#              #
-#    Updated: 2025/11/17 19:30:13 by nefimov          ###   ########.fr        #
+#    Updated: 2025/11/18 17:59:37 by nefimov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRC = ft_bzero.c \
 	  ft_lstadd_front.c \
 	  ft_lstadd_back.c \
 	  ft_lstdelone.c \
+	  ft_lstclear.c \
 	  ft_lstsize.c \
 	  ft_lstlast.c \
       ft_strmapi.c \
