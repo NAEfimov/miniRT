@@ -2,6 +2,7 @@
 # define MAIN_H
 
 #include <stdint.h>
+#include "libft.h"
 
 #define WIDTH		256
 #define HEIGHT		256
@@ -72,12 +73,9 @@ typedef struct	s_scene
 	t_camera	*camera;
 	t_amb_light	*a_light;
 	t_light		*light;
-	t_sphere	*sphere;
-	t_plane		*plane;
-	t_cylinder	*cyl;
-	int			sphere_num;
-	int			plane_num;
-	int			cyl_num;
+	t_list		*sphere;
+	t_list		*plane;
+	t_list		*cyl;
 }	t_scene;
 
 int	read_scene(t_scene *scene, char *fname);

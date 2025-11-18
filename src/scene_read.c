@@ -8,12 +8,10 @@
 
 int		open_file(char *fname);
 int		init_scene(t_scene *scene);
-void	skip_whitespaces(char **str_ptr)
-{
-	while (**str_ptr == ' ' || **str_ptr == '\t')
-		++(*str_ptr);
-}
+void	parse_line(t_scene *scene, char *line);
+void	skip_whitespaces(char **str_ptr);
 
+// Read scene elements from file
 int	read_scene(t_scene *scene, char *fname)
 {
 	int		fd;
@@ -42,6 +40,7 @@ int	read_scene(t_scene *scene, char *fname)
 	return (0);
 }
 
+// Initialise scene struct
 int init_scene(t_scene *scene)
 {
 	scene->height = HEIGHT;
@@ -50,17 +49,15 @@ int init_scene(t_scene *scene)
 	scene->a_light = NULL;
 	scene->light = NULL;
 	scene->plane = NULL;
-	scene->plane_num = 0;
 	scene->cyl = NULL;
-	scene->cyl_num = 0;
 	scene->sphere = NULL;
-	scene->sphere_num = 0;
 	scene->image = malloc(scene->width * scene->height * sizeof(int32_t));
 	if (scene->image == NULL)
 		return(1);
 	return (0);
 }
 
+// Open file for read
 int open_file(char *fname)
 {
 	int fd;	
@@ -80,4 +77,19 @@ int open_file(char *fname)
 		exit(1);
 	}
 	return (fd);
+}
+
+// Skip whilespaces and tabs from the begginig of the line
+// and move original pointer
+void	skip_whitespaces(char **str_ptr)
+{
+	while (**str_ptr == ' ' || **str_ptr == '\t')
+		++(*str_ptr);
+}
+
+// 
+void	parse_line(t_scene *scene, char *line)
+{
+	(void)scene;
+	(void)line;
 }
