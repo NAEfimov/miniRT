@@ -6,17 +6,37 @@
 #include "main.h"
 #include "libft.h"
 
-int read_file(char *fname);
-int init_scene(t_scene *scene);
+int		open_file(char *fname);
+int		init_scene(t_scene *scene);
+void	skip_whitespaces(char **str_ptr)
+{
+	while (**str_ptr == ' ' || **str_ptr == '\t')
+		++(*str_ptr);
+}
 
 int	read_scene(t_scene *scene, char *fname)
 {
-	int	fd;
+	int		fd;
+	char	*line;
+	char	*w_line;
 
-	fd = read_file(fname);
+	fd = open_file(fname);
 	if (init_scene(scene))
 		return (1);
 	
+	line = get_next_line(fd);
+	while (line)
+	{
+		w_line = line;
+		skip_whitespaces(&w_line);
+		if (*w_line != '\n' && *w_line != '\0')
+		{
+			ft_putstr_fd(w_line, 0);
+		}
+		free(line);
+		line = get_next_line(fd);
+	}
+	ft_putstr_fd("\n", 0);
 
 	close(fd);
 	return (0);
@@ -41,10 +61,15 @@ int init_scene(t_scene *scene)
 	return (0);
 }
 
-int read_file(char *fname)
+int open_file(char *fname)
 {
 	int fd;	
 
+	if (fname == NULL)
+	{
+		ft_putstr_fd("open_file(): NULL input", 2);
+		exit(1);
+	}
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
 	{
