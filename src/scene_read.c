@@ -16,7 +16,7 @@ int	read_scene(t_scene *scene, char *fname)
 {
 	int		fd;
 	char	*line;
-	char	*w_line;
+	// char	*w_line;
 
 	fd = open_file(fname);
 	if (init_scene(scene))
@@ -25,12 +25,13 @@ int	read_scene(t_scene *scene, char *fname)
 	line = get_next_line(fd);
 	while (line)
 	{
-		w_line = line;
-		skip_whitespaces(&w_line);
-		if (*w_line != '\n' && *w_line != '\0')
-		{
-			ft_putstr_fd(w_line, 0);
-		}
+		parse_line(scene, line);
+		// w_line = line;
+		// skip_whitespaces(&w_line);
+		// if (*w_line != '\n' && *w_line != '\0')
+		// {
+		// 	ft_putstr_fd(w_line, 0);
+		// }
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -91,5 +92,9 @@ void	skip_whitespaces(char **str_ptr)
 void	parse_line(t_scene *scene, char *line)
 {
 	(void)scene;
-	(void)line;
+	skip_whitespaces(&line);
+	if (*line != '\n' && *line != '\0')
+	{
+		ft_putstr_fd(line, 0);
+	}
 }
