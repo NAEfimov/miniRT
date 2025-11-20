@@ -14,7 +14,20 @@ SRCS	:= main.c \
 		   scene_draw.c \
 		   scene_read.c \
 		   scene_trace.c \
-		   check_args.c
+		   check_args.c \
+		   parser/parse_ambient_light.c \
+		   parser/parse_camera.c \
+		   parser/parse_cylinder.c \
+		   parser/parse_light.c \
+		   parser/parse_line.c \
+		   parser/parse_plane.c \
+		   parser/parse_scene_element.c \
+		   parser/parse_sphere.c \
+		   parser/read_color.c \
+		   parser/read_double.c \
+		   parser/read_int.c \
+		   parser/read_normal.c \
+		   parser/read_vec.c
 
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))

@@ -22,3 +22,18 @@ int	clean_scene(t_scene *scene)
 
 	return (0);
 }
+
+void	clean_words(char **words)
+{
+	unsigned int	i;
+
+	if (words == NULL)
+		return ;
+	i = 0;
+	while (words[i] != NULL)
+	{
+		free(words[i]);
+		++i;
+	}
+	free(words);
+}

@@ -6,20 +6,20 @@
 #include <sys/stat.h>
 #include "main.h"
 #include "libft.h"
+#include "./parser/parse.h"
 
 int		open_file(char *fname);
 int		init_scene(t_scene *scene);
 void	parse_line(t_scene *scene, char *line);
-void	rm_nline_char(char **str_ptr);
-void	clear_words(char **words);
+// void	clean_words(char **words);
 
-void	parse_scene_element(t_scene *scene, char **words);
-void	parse_ambient_light(t_scene *scene, char **words);
-void	parse_camera(t_scene *scene, char **words);
-void	parse_light(t_scene *scene, char **words);
-void	parse_sphere(t_scene *scene, char **words);
-void	parse_plane(t_scene *scene, char **words);
-void	parse_cylinder(t_scene *scene, char **words);
+// void	parse_scene_element(t_scene *scene, char **words);
+// void	parse_ambient_light(t_scene *scene, char **words);
+// void	parse_camera(t_scene *scene, char **words);
+// void	parse_light(t_scene *scene, char **words);
+// void	parse_sphere(t_scene *scene, char **words);
+// void	parse_plane(t_scene *scene, char **words);
+// void	parse_cylinder(t_scene *scene, char **words);
 
 
 // Read scene elements from file
@@ -85,111 +85,17 @@ int open_file(char *fname)
 	return (fd);
 }
 
-void	rm_nline_char(char **str_ptr)
-{
-	size_t	i;
-	char	*str;
+// void	clean_words(char **words)
+// {
+// 	unsigned int	i;
 
-	str = *str_ptr;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			str[i] = '\0';
-		++i;
-	}
-}
-
-// Parce line with ft_split
-void	parse_line(t_scene *scene, char *line)
-{
-	char	**words;
-
-	rm_nline_char(&line);
-	words = ft_split(line, ' ');
-	if (words == NULL)
-	{
-		ft_putstr_fd("ft_split(): error\n", 2);
-		clean_scene(scene);
-		exit(1);
-	}
-	if (words[0])
-	{
-		// Print line
-		printf("LINE: '%s'\n", line);
-
-		parse_scene_element(scene, words);
-
-		clear_words(words);
-	}
-}
-
-void parse_scene_element(t_scene *scene, char **words)
-{
-	// Print identifire
-	printf("IDENT: '%s'\n", words[0]);
-
-	if (strcmp(words[0], "A") == 0)
-		parse_ambient_light(scene, words);
-	else if (strcmp(words[0], "C") == 0)
-		parse_camera(scene, words);
-	else if (strcmp(words[0], "L") == 0)
-		parse_light(scene, words);
-	else if (strcmp(words[0], "sp") == 0)
-		parse_sphere(scene, words);
-	else if (strcmp(words[0], "pl") == 0)
-		parse_plane(scene, words);
-	else if (strcmp(words[0], "cy") == 0)
-		parse_cylinder(scene, words);
-	else
-	{
-		ft_putstr_fd("Error\nWrong scene description syntax\n", 2);
-		clear_words(words);
-		clean_scene(scene);
-		exit(1);
-	}
-}
-
-void	parse_ambient_light(t_scene *scene, char **words)
-{
-
-}
-
-void	parse_camera(t_scene *scene, char **words)
-{
-
-}
-
-void	parse_light(t_scene *scene, char **words)
-{
-
-}
-
-void	parse_sphere(t_scene *scene, char **words)
-{
-
-}
-
-void	parse_plane(t_scene *scene, char **words)
-{
-
-}
-void	parse_cylinder(t_scene *scene, char **words)
-{
-
-}
-
-void	clear_words(char **words)
-{
-	unsigned int	i;
-
-	if (words == NULL)
-		return ;
-	i = 0;
-	while (words[i] != NULL)
-	{
-		free(words[i]);
-		++i;
-	}
-	free(words);
-}
+// 	if (words == NULL)
+// 		return ;
+// 	i = 0;
+// 	while (words[i] != NULL)
+// 	{
+// 		free(words[i]);
+// 		++i;
+// 	}
+// 	free(words);
+// }

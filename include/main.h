@@ -78,10 +78,12 @@ typedef struct	s_scene
 	t_list		*cyl;
 }	t_scene;
 
-int	read_scene(t_scene *scene, char *fname);
-int	trace_scene(t_scene *scene);
-int	draw_scene(t_scene *scene);
-int	clean_scene(t_scene *scene);
+int		read_scene(t_scene *scene, char *fname);
+int		trace_scene(t_scene *scene);
+int		draw_scene(t_scene *scene);
+
+int		clean_scene(t_scene *scene);
+void	clean_words(char **words);
 
 // Check_arguments
 void	check_args(int argc, char **argv);
