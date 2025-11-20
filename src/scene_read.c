@@ -11,23 +11,12 @@
 int		open_file(char *fname);
 int		init_scene(t_scene *scene);
 void	parse_line(t_scene *scene, char *line);
-// void	clean_words(char **words);
-
-// void	parse_scene_element(t_scene *scene, char **words);
-// void	parse_ambient_light(t_scene *scene, char **words);
-// void	parse_camera(t_scene *scene, char **words);
-// void	parse_light(t_scene *scene, char **words);
-// void	parse_sphere(t_scene *scene, char **words);
-// void	parse_plane(t_scene *scene, char **words);
-// void	parse_cylinder(t_scene *scene, char **words);
-
 
 // Read scene elements from file
 int	read_scene(t_scene *scene, char *fname)
 {
 	int		fd;
 	char	*line;
-	// char	*w_line;
 
 	fd = open_file(fname);
 	if (init_scene(scene))
@@ -84,18 +73,3 @@ int open_file(char *fname)
 	}
 	return (fd);
 }
-
-// void	clean_words(char **words)
-// {
-// 	unsigned int	i;
-
-// 	if (words == NULL)
-// 		return ;
-// 	i = 0;
-// 	while (words[i] != NULL)
-// 	{
-// 		free(words[i]);
-// 		++i;
-// 	}
-// 	free(words);
-// }
