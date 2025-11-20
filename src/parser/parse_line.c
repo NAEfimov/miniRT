@@ -20,11 +20,9 @@ void	parse_line(t_scene *scene, char *line)
 	{
 		// Print line
 		printf("LINE: '%s'\n", line);
-
 		parse_scene_element(scene, words);
-
-		clean_words(words);
 	}
+	clean_words(words);
 }
 
 void	rm_nline_char(char **str_ptr)
