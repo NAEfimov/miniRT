@@ -12,4 +12,7 @@ void	parse_sphere(t_scene *scene, char **words);
 void	parse_plane(t_scene *scene, char **words);
 void	parse_cylinder(t_scene *scene, char **words);
 
+void	syntax_err(t_scene *scene, char **words);
+void	malloc_err(t_scene *scene, char **words);
+
 #endif

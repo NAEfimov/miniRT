@@ -20,10 +20,5 @@ void parse_scene_element(t_scene *scene, char **words)
 	else if (ft_strcmp(words[0], "cy") == 0)
 		parse_cylinder(scene, words);
 	else
-	{
-		ft_putstr_fd("Error\nWrong scene description syntax\n", 2);
-		clean_words(words);
-		clean_scene(scene);
-		exit(1);
-	}
+		syntax_err(scene, words);
 }
