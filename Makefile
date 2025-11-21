@@ -22,6 +22,7 @@ SRCS	:= main.c \
 		   parser/parse_line.c \
 		   parser/parse_plane.c \
 		   parser/parse_scene_element.c \
+		   parser/parse_utils.c \
 		   parser/parse_sphere.c \
 		   parser/read_color.c \
 		   parser/read_double.c \
@@ -29,7 +30,7 @@ SRCS	:= main.c \
 		   parser/read_uint8.c \
 		   parser/read_normal.c \
 		   parser/read_vec.c \
-		   parser/parse_utils.c
+		   parser/read_utils.c
 
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))
