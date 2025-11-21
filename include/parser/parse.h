@@ -1,6 +1,8 @@
 #ifndef PARSE_H
 # define PARSE_H
 
+# define VEC_DELIMETER ','
+
 # include "main.h"
 
 void	parse_line(t_scene *scene, char *line);

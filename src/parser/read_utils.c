@@ -7,7 +7,24 @@ int	last_char_is_delim(char *str)
 	int	i;
 
 	i = ft_strlen(str);
-	if (i > 0 && str[i - 1] == DELIMETER);
+	if (i > 0 && str[i - 1] == VEC_DELIMETER)
 		return (1);
 	return (0);
+}
+
+int read_sign(char **pp)
+{
+	char	*ptr;
+
+	ptr = *pp;
+	if (*ptr == '-')
+	{
+		ptr++;
+		return (-1);
+	}
+	else if (*ptr == '+')
+	{
+		ptr++;
+	}
+	return (1);
 }
