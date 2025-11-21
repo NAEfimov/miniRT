@@ -1,6 +1,7 @@
-#include "./parser/parse.h"
-#include "./parser/read.h"
-#include <stdio.h>
+#include "parser/parse.h"
+#include "parser/read.h"
+#include "utils/print/print.h"
+// #include <stdio.h>
 
 #define MIN_RATIO 0.0
 #define MAX_RATIO 1.0
@@ -13,8 +14,8 @@ void	parse_ambient_light(t_scene *scene, char **words)
 	// Check if ambient light already exists, and there are only 2 arguments
 	if (scene->a_light || !words[1] || !words[2] || words[3])
 		syntax_err(scene, words);
-	printf("A_LIGHT: '%s'\n", words[1]);
-	printf("COLOR: '%s'\n", words[2]);
+	// printf("A_LIGHT: '%s'\n", words[1]);
+	// printf("COLOR: '%s'\n", words[2]);
 
 	// Try to read ratio and color
 	if (read_double(&ratio, words[1]) || read_color(&color, words[2]))
@@ -32,6 +33,7 @@ void	parse_ambient_light(t_scene *scene, char **words)
 	scene->a_light->color.r = color.r;
 	scene->a_light->color.g = color.g;
 	scene->a_light->color.b = color.b;
-	printf("scene->a_light->ratio: %f\n", ratio);
-	printf("scene->a_light->color: %d, %d, %d\n\n", color.r, color.g, color.b);
+	// printf("scene->a_light->ratio: %f\n", ratio);
+	// printf("scene->a_light->color: %d, %d, %d\n\n", color.r, color.g, color.b);
+	// print_ambient_light(scene->a_light);
 }

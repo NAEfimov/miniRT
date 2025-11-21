@@ -1,7 +1,7 @@
 #include "parser/read.h"
 #include "parser/parse.h"
 #include "libft.h"
-#include <stdio.h>
+// #include <stdio.h>
 
 int	read_vec(t_vec *vec, char *word)
 {
@@ -29,6 +29,6 @@ int	read_vec(t_vec *vec, char *word)
 	}
 	clean_words(words);
 	// ft_putstr_fd("vec was readed\n", 0);
-	printf("Vec was readed: %f, %f, %f\n", vec->x, vec->y, vec->z);
+	// printf("Vec was readed: %f, %f, %f\n", vec->x, vec->y, vec->z);
 	return (0);
 }
