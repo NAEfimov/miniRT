@@ -14,17 +14,14 @@ int	last_char_is_delim(char *str)
 
 int read_sign(char **pp)
 {
-	char	*ptr;
-
-	ptr = *pp;
-	if (*ptr == '-')
+	if (**pp == '-')
 	{
-		ptr++;
+		(*pp)++;
 		return (-1);
 	}
-	else if (*ptr == '+')
+	else if (**pp == '+')
 	{
-		ptr++;
+		(*pp)++;
 	}
 	return (1);
 }

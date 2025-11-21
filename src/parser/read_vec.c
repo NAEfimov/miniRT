@@ -1,7 +1,7 @@
-#include "./parser/read.h"
-#include "./parser/parse.h"
+#include "parser/read.h"
+#include "parser/parse.h"
 #include "libft.h"
-
+#include <stdio.h>
 
 int	read_vec(t_vec *vec, char *word)
 {
@@ -17,7 +17,8 @@ int	read_vec(t_vec *vec, char *word)
 	size = 0;
 	while (words[size])
 		++size;
-	
+	// printf("words count: %ld\n", size);
+
 	if (size != 3 ||
 		read_double(&(vec->x), words[0]) ||
 		read_double(&(vec->y), words[1]) ||
@@ -27,5 +28,7 @@ int	read_vec(t_vec *vec, char *word)
 		return (1);
 	}
 	clean_words(words);
+	// ft_putstr_fd("vec was readed\n", 0);
+	printf("Vec was readed: %f, %f, %f\n", vec->x, vec->y, vec->z);
 	return (0);
 }

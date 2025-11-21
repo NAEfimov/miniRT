@@ -1,4 +1,5 @@
 #include "./parser/read.h"
+// #include <stdio.h>
 
 static void parse_int_part(double *result, char **ptr)
 {
@@ -37,6 +38,8 @@ int	read_double(double *num, char *ptr)
 		return (1);
 
 	sign = read_sign(&ptr);
+	// printf("Sign was readed: %d\n", sign);
+	// printf("Word: '%s'\n", ptr);
 	if ((*ptr < '0' || *ptr > '9') && *ptr != '.')
 		return (1);
 
@@ -48,5 +51,6 @@ int	read_double(double *num, char *ptr)
 		return (1);
 
 	*num = sign * result;
+	// printf("Double was readed: %f\n", *num);
 	return (0);
 }

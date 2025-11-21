@@ -1,4 +1,5 @@
 #include "./parser/read.h"
+#include <stdio.h>
 
 int	read_int(int *num, char *word)
 {
@@ -9,10 +10,11 @@ int	read_int(int *num, char *word)
 		return (1);
 
 	sign = read_sign(&word);
-
+	// printf("Sign was readed: %d\n", sign);
+	// printf("Word: '%s'\n", word);
 	if (*word < '0' || *word > '9')
 		return (1);
-		
+
 	result = 0;
 	while (*word >= '0' && *word <= '9')
 	{
@@ -25,5 +27,6 @@ int	read_int(int *num, char *word)
 	if (*word != '\0')
 		return (1);
 	*num = sign * result;
+	// printf("Int was readed: %d\n", *num);
 	return (0);
 }
