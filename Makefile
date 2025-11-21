@@ -28,6 +28,7 @@ SRCS	:= main.c \
 		   parser/read_double.c \
 		   parser/read_int.c \
 		   parser/read_uint8.c \
+		   parser/read_uint32.c \
 		   parser/read_normal.c \
 		   parser/read_vec.c \
 		   parser/read_utils.c \

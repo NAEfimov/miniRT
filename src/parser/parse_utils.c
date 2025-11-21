@@ -16,3 +16,14 @@ void	malloc_err(t_scene *scene, char **words)
 	exit(1);
 }
 
+int		words_size(char **words)
+{
+	int	size;
+
+	if (!words)
+		return (-1);
+	size = 0;
+	while (words[size])
+		++size;
+	return (size);
+}

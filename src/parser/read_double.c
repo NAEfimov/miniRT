@@ -1,5 +1,30 @@
 #include "./parser/read.h"
-// #include <stdio.h>
+
+static void parse_int_part(double *result, char **ptr);
+static void parse_fractal_part(double *result, char **ptr);
+
+int	read_double(double *num, char *ptr)
+{
+	int sign;
+	double result;
+
+	if (!ptr || !*ptr || !num)
+		return (1);
+
+	sign = read_sign(&ptr);
+	if ((*ptr < '0' || *ptr > '9') && *ptr != '.')
+		return (1);
+
+	result = 0.0;
+	parse_int_part(&result, &ptr);
+	parse_fractal_part(&result, &ptr);
+
+	if (*ptr != '\0')
+		return (1);
+
+	*num = sign * result;
+	return (0);
+}
 
 static void parse_int_part(double *result, char **ptr)
 {
@@ -27,30 +52,4 @@ static void parse_fractal_part(double *result, char **ptr)
 		}
 		*result += frac / div;
 	}
-}
-
-int	read_double(double *num, char *ptr)
-{
-	int sign;
-	double result;
-
-	if (!ptr || !*ptr || !num)
-		return (1);
-
-	sign = read_sign(&ptr);
-	// printf("Sign was readed: %d\n", sign);
-	// printf("Word: '%s'\n", ptr);
-	if ((*ptr < '0' || *ptr > '9') && *ptr != '.')
-		return (1);
-
-	result = 0.0;
-	parse_int_part(&result, &ptr);
-	parse_fractal_part(&result, &ptr);
-
-	if (*ptr != '\0')
-		return (1);
-
-	*num = sign * result;
-	// printf("Double was readed: %f\n", *num);
-	return (0);
 }
