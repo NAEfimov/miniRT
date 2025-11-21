@@ -6,7 +6,8 @@
 #include <sys/stat.h>
 #include "main.h"
 #include "libft.h"
-#include "./parser/parse.h"
+#include "parser/parse.h"
+#include "utils/print/print.h"
 
 int		open_file(char *fname);
 int		init_scene(t_scene *scene);
@@ -30,6 +31,7 @@ int	read_scene(t_scene *scene, char *fname)
 		line = get_next_line(fd);
 	}
 	ft_putstr_fd("\n", 0);
+	print_scene(scene);
 
 	close(fd);
 	return (0);

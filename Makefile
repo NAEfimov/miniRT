@@ -30,7 +30,18 @@ SRCS	:= main.c \
 		   parser/read_uint8.c \
 		   parser/read_normal.c \
 		   parser/read_vec.c \
-		   parser/read_utils.c
+		   parser/read_utils.c \
+		   utils/print/print_scene.c \
+		   utils/print/print_ambient_light.c \
+		   utils/print/print_camera.c \
+		   utils/print/print_light.c \
+		   utils/print/print_sphere.c \
+		   utils/print/print_plane.c \
+		   utils/print/print_cylinder.c \
+		   utils/print/print_vec.c \
+		   utils/print/print_color.c \
+		   utils/print/print_double.c \
+		   utils/print/print_uint32.c
 
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))
