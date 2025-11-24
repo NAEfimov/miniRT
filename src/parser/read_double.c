@@ -22,7 +22,7 @@ int	read_double(double *num, char *ptr)
 	return (0);
 }
 
-static void parse_int_part(double *result, char **ptr)
+static void	parse_int_part(double *result, char **ptr)
 {
 	while (**ptr >= '0' && **ptr <= '9')
 	{
@@ -31,7 +31,7 @@ static void parse_int_part(double *result, char **ptr)
 	}
 }
 
-static void parse_fractal_part(double *result, char **ptr)
+static void	parse_fractal_part(double *result, char **ptr)
 {
 	double	frac;
 	double	div;

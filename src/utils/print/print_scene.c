@@ -7,7 +7,7 @@ void	print_scene(t_scene *scene)
 	if (!scene)
 	{
 		printf("Scene: NULL\n");
-		return;
+		return ;
 	}
 	printf("Scene:\n");
 	printf("  Width: %u\n", scene->width);

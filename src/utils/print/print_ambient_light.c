@@ -6,7 +6,7 @@ void	print_ambient_light(t_amb_light *a_light)
 	if (!a_light)
 	{
 		printf("Ambient Light: NULL\n");
-		return;
+		return ;
 	}
 	printf("Ambient Light:\n");
 	print_double(a_light->ratio, "  Ratio");

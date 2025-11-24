@@ -11,7 +11,6 @@ void	parse_sphere(t_scene *scene, char **words)
 	t_sphere	*sph;
 	t_list		*node;
 
-
 	// Check if ambient light already exists, and there are only 2 arguments
 	if (split_size(words) != SP_ARGS_NUM)
 		syntax_err(scene, words);

@@ -6,7 +6,7 @@ void	print_sphere(t_sphere *sphere)
 	if (!sphere)
 	{
 		printf("Sphere: NULL\n");
-		return;
+		return ;
 	}
 	printf("Sphere:\n");
 	print_vec(&sphere->coord, "  Coord");

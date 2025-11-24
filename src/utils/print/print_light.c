@@ -6,7 +6,7 @@ void	print_light(t_light *light)
 	if (!light)
 	{
 		printf("Light: NULL\n");
-		return;
+		return ;
 	}
 	printf("Light:\n");
 	print_vec(&light->coord, "  Coord");

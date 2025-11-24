@@ -6,7 +6,7 @@ void	print_camera(t_camera *camera)
 	if (!camera)
 	{
 		printf("Camera: NULL\n");
-		return;
+		return ;
 	}
 	printf("Camera:\n");
 	print_vec(&camera->coord, "  Coord");
