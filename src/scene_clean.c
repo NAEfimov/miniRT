@@ -6,6 +6,8 @@ int	clean_scene(t_scene *scene)
 {
 	if (scene->image)
 		free(scene->image);
+	if (scene->line)
+		free(scene->line);
 	if (scene->camera)
 		free(scene->camera);
 	if (scene->a_light)

@@ -76,6 +76,7 @@ typedef struct	s_scene
 	t_list		*sphere;
 	t_list		*plane;
 	t_list		*cyl;
+	char		*line;
 }	t_scene;
 
 int		read_scene(t_scene *scene, char *fname);

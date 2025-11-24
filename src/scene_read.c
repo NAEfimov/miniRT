@@ -26,6 +26,7 @@ int	read_scene(t_scene *scene, char *fname)
 	line = get_next_line(fd);
 	while (line)
 	{
+		scene->line = line;
 		parse_line(scene, line);
 		free(line);
 		line = get_next_line(fd);
@@ -48,6 +49,7 @@ int init_scene(t_scene *scene)
 	scene->plane = NULL;
 	scene->cyl = NULL;
 	scene->sphere = NULL;
+	scene->line = NULL;
 	scene->image = malloc(scene->width * scene->height * sizeof(int32_t));
 	if (scene->image == NULL)
 		return(1);
