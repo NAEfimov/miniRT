@@ -1,7 +1,7 @@
 #ifndef PRINT_H
 # define PRINT_H
 
-#include "main.h"
+# include "main.h"
 
 void	print_scene(t_scene *scene);
 

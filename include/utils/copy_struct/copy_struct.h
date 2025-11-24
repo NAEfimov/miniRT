@@ -1,7 +1,7 @@
 #ifndef COPY_STRUCT_H
 # define COPY_STRUCT_H
 
-#include "main.h"
+# include "main.h"
 
 void	copy_color(t_color *dest, const t_color *src);
 void	copy_vec(t_vec *dest, const t_vec *src);
