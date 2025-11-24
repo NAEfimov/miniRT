@@ -1,6 +1,6 @@
 #include "parser/parse.h"
 #include "parser/read.h"
-#include <stdio.h>
+#include "utils/struct/struct.h"
 
 #define C_ARGS_NUM	4
 #define MAX_FOV 180
@@ -22,11 +22,5 @@ void	parse_camera(t_scene *scene, char **words)
 	scene->camera = malloc(sizeof(t_camera));
 	if (!scene->camera)
 		malloc_err(scene, words);
-	scene->camera->coord.x = r.coord.x;
-	scene->camera->coord.y = r.coord.y;
-	scene->camera->coord.z = r.coord.z;
-	scene->camera->orient.x = r.orient.x;
-	scene->camera->orient.y = r.orient.y;
-	scene->camera->orient.z = r.orient.z;
-	scene->camera->fov = r.fov;
+	copy_camera(scene->camera, &r);
 }

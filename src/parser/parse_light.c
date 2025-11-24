@@ -1,6 +1,6 @@
 #include "parser/parse.h"
 #include "parser/read.h"
-// #include <stdio.h>
+#include "utils/struct/struct.h"
 
 #define L_ARGS_NUM	4
 #define MIN_RATIO 0.0
@@ -24,11 +24,5 @@ void	parse_light(t_scene *scene, char **words)
 	scene->light = malloc(sizeof(t_light));
 	if (!scene->light)
 		malloc_err(scene, words);
-	scene->light->coord.x = r.coord.x;
-	scene->light->coord.y = r.coord.y;
-	scene->light->coord.z = r.coord.z;
-	scene->light->brigh = r.brigh;
-	scene->light->color.r = r.color.r;
-	scene->light->color.g = r.color.g;
-	scene->light->color.b = r.color.b;
+	copy_light(scene->light, &r);
 }
