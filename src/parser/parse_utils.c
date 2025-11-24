@@ -1,4 +1,4 @@
-#include "./parser/parse.h"
+#include "parser/parse.h"
 
 void	syntax_err(t_scene *scene, char **words)
 {
@@ -16,7 +16,7 @@ void	malloc_err(t_scene *scene, char **words)
 	exit(1);
 }
 
-int		words_size(char **words)
+int	split_size(char **words)
 {
 	int	size;
 

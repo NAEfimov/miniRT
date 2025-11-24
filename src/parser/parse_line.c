@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "./parser/parse.h"
+#include "parser/parse.h"
 
 void	rm_nline_char(char **str_ptr);
 

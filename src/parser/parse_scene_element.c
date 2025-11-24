@@ -1,12 +1,8 @@
-// #include <stdio.h>
-#include "./parser/parse.h"
+#include "parser/parse.h"
 #include "libft.h"
 
-void parse_scene_element(t_scene *scene, char **words)
+void	parse_scene_element(t_scene *scene, char **words)
 {
-	// Print identifire
-	// printf("IDENT: '%s'\n", words[0]);
-
 	if (ft_strcmp(words[0], "A") == 0)
 		parse_ambient_light(scene, words);
 	else if (ft_strcmp(words[0], "C") == 0)

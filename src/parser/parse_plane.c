@@ -1,25 +1,20 @@
-#include "./parser/parse.h"
+#include "parser/parse.h"
 #include "parser/read.h"
-// #include <stdio.h>
 
-#define	PL_ARGS_NUM	4
+#define PL_ARGS_NUM	4
 
 void	parse_plane(t_scene *scene, char **words)
 {
-	t_plane		r;
-	t_plane		*pln;
-	
+	t_plane	r;
+	t_plane	*pln;
+
 	// Check if ambient light already exists, and there are only 2 arguments
-	if (words_size(words) != PL_ARGS_NUM)
+	if (split_size(words) != PL_ARGS_NUM)
 		syntax_err(scene, words);
-
 	// Try to read r_diameter and color
-	if (read_vec(&r.coord, words[1]) || read_normal(&r.normal, words[2]) ||
-		read_color(&r.color, words[3]))
-	{
+	if (read_vec(&r.coord, words[1]) || read_normal(&r.normal, words[2])
+		|| read_color(&r.color, words[3]))
 		syntax_err(scene, words);
-	}
-
 	// Allocate a_light and initialise values
 	pln = malloc(sizeof(t_plane));
 	if (!pln)

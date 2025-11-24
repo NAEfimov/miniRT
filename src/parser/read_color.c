@@ -1,5 +1,5 @@
-#include "./parser/read.h"
-#include "./parser/parse.h"
+#include "parser/read.h"
+#include "parser/parse.h"
 
 int	read_color(t_color *color, char *word)
 {
@@ -10,11 +10,10 @@ int	read_color(t_color *color, char *word)
 	words = ft_split(word, VEC_DELIMETER);
 	if (!words)
 		return (1);
-	
-	if (words_size(words) != 3 ||
-		read_uint8(&(color->r), words[0]) ||
-		read_uint8(&(color->g), words[1]) ||
-		read_uint8(&(color->b), words[2]))
+	if (split_size(words) != 3
+		|| read_uint8(&(color->r), words[0])
+		|| read_uint8(&(color->g), words[1])
+		|| read_uint8(&(color->b), words[2]))
 	{
 		clean_words(words);
 		return (1);

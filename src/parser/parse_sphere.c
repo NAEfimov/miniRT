@@ -1,29 +1,25 @@
-#include "./parser/parse.h"
+#include "parser/parse.h"
 #include "parser/read.h"
 // #include <stdio.h>
 
-#define	SP_ARGS_NUM	4
+#define SP_ARGS_NUM	4
 #define MIN_DIAMETER 0.0
 
 void	parse_sphere(t_scene *scene, char **words)
 {
 	t_sphere	r;
 	t_sphere	*sph;
-	
-	// Check if ambient light already exists, and there are only 2 arguments
-	if (words_size(words) != SP_ARGS_NUM)
-		syntax_err(scene, words);
 
-	// Try to read r_diameter and color
-	if (read_vec(&r.coord, words[1]) || read_double(&r.diameter, words[2]) ||
-		read_color(&r.color, words[3]))
-	{
+	// Check if ambient light already exists, and there are only 2 arguments
+	if (split_size(words) != SP_ARGS_NUM)
 		syntax_err(scene, words);
-	}
+	// Try to read r_diameter and color
+	if (read_vec(&r.coord, words[1]) || read_double(&r.diameter, words[2])
+		|| read_color(&r.color, words[3]))
+		syntax_err(scene, words);
 	// Check r_diameter for limits
 	if (r.diameter < MIN_DIAMETER)
 		syntax_err(scene, words);
-
 	// Allocate a_light and initialise values
 	sph = malloc(sizeof(t_sphere));
 	if (!sph)
