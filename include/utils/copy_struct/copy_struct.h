@@ -1,5 +1,5 @@
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef COPY_STRUCT_H
+# define COPY_STRUCT_H
 
 #include "main.h"
 

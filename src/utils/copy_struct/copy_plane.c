@@ -1,4 +1,4 @@
-#include "utils/struct/struct.h"
+#include "utils/copy_struct/copy_struct.h"
 
 void	copy_plane(t_plane *dest, const t_plane *src)
 {

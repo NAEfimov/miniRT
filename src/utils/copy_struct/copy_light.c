@@ -1,4 +1,4 @@
-#include "utils/struct/struct.h"
+#include "utils/copy_struct/copy_struct.h"
 
 void	copy_light(t_light *dest, const t_light *src)
 {

@@ -1,4 +1,4 @@
-#include "utils/struct/struct.h"
+#include "utils/copy_struct/copy_struct.h"
 
 void	copy_cylinder(t_cylinder *dest, const t_cylinder *src)
 {
