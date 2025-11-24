@@ -42,7 +42,16 @@ SRCS	:= main.c \
 		   utils/print/print_vec.c \
 		   utils/print/print_color.c \
 		   utils/print/print_double.c \
-		   utils/print/print_uint32.c
+		   utils/print/print_uint32.c \
+		   utils/struct/copy_color.c \
+		   utils/struct/copy_vec.c \
+		   utils/struct/copy_amb_light.c \
+		   utils/struct/copy_camera.c \
+		   utils/struct/copy_light.c \
+		   utils/struct/copy_sphere.c \
+		   utils/struct/copy_plane.c \
+		   utils/struct/copy_cylinder.c \
+		   utils/struct/copy_scene.c
 
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))
