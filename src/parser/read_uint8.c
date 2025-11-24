@@ -1,4 +1,4 @@
-#include "./parser/read.h"
+#include "parser/read.h"
 
 int	read_uint8(uint8_t *num, char *word)
 {
@@ -9,5 +9,5 @@ int	read_uint8(uint8_t *num, char *word)
 	if (result < 0 || result > 255)
 		return (1);
 	*num = (uint8_t)result;
-    return (0);
+	return (0);
 }

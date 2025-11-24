@@ -9,9 +9,9 @@
 #include "parser/parse.h"
 #include "utils/print/print.h"
 
-int		open_file(char *fname);
-int		init_scene(t_scene *scene);
-void	parse_line(t_scene *scene, char *line);
+static int		open_file(char *fname);
+static int		init_scene(t_scene *scene);
+// void	parse_line(t_scene *scene, char *line);
 
 // Read scene elements from file
 int	read_scene(t_scene *scene, char *fname)
@@ -22,14 +22,16 @@ int	read_scene(t_scene *scene, char *fname)
 	fd = open_file(fname);
 	if (init_scene(scene))
 		return (1);
-	
+
 	line = get_next_line(fd);
 	while (line)
 	{
+		scene->line = line;
 		parse_line(scene, line);
 		free(line);
 		line = get_next_line(fd);
 	}
+	scene->line = NULL;
 	ft_putstr_fd("\n", 0);
 	print_scene(scene);
 
@@ -38,7 +40,7 @@ int	read_scene(t_scene *scene, char *fname)
 }
 
 // Initialise scene struct
-int init_scene(t_scene *scene)
+static int init_scene(t_scene *scene)
 {
 	scene->height = HEIGHT;
 	scene->width = WIDTH;
@@ -48,16 +50,17 @@ int init_scene(t_scene *scene)
 	scene->plane = NULL;
 	scene->cyl = NULL;
 	scene->sphere = NULL;
+	scene->line = NULL;
 	scene->image = malloc(scene->width * scene->height * sizeof(int32_t));
 	if (scene->image == NULL)
-		return(1);
+		return (1);
 	return (0);
 }
 
 // Open file for read
-int open_file(char *fname)
+static int	open_file(char *fname)
 {
-	int fd;	
+	int	fd;
 
 	if (fname == NULL)
 	{

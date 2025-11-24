@@ -11,11 +11,10 @@ int	read_vec(t_vec *vec, char *word)
 	words = ft_split(word, VEC_DELIMETER);
 	if (!words)
 		return (1);
-
-	if (words_size(words) != 3 ||
-		read_double(&(vec->x), words[0]) ||
-		read_double(&(vec->y), words[1]) ||
-		read_double(&(vec->z), words[2]))
+	if (split_size(words) != 3
+		|| read_double(&(vec->x), words[0])
+		|| read_double(&(vec->y), words[1])
+		|| read_double(&(vec->z), words[2]))
 	{
 		clean_words(words);
 		return (1);

@@ -1,4 +1,4 @@
-#include "./parser/read.h"
+#include "parser/read.h"
 
 int	read_uint32(uint32_t *num, char *word)
 {
@@ -9,5 +9,5 @@ int	read_uint32(uint32_t *num, char *word)
 	if (result < 0)
 		return (1);
 	*num = (uint32_t)result;
-    return (0);
+	return (0);
 }

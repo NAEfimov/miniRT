@@ -6,7 +6,7 @@ void	print_cylinder(t_cylinder *cyl)
 	if (!cyl)
 	{
 		printf("Cylinder: NULL\n");
-		return;
+		return ;
 	}
 	printf("Cylinder:\n");
 	print_vec(&cyl->coord, "  Coordinates");

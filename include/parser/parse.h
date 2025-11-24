@@ -16,6 +16,6 @@ void	parse_cylinder(t_scene *scene, char **words);
 
 void	syntax_err(t_scene *scene, char **words);
 void	malloc_err(t_scene *scene, char **words);
-int		words_size(char **words);
+int		split_size(char **words);
 
 #endif

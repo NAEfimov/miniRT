@@ -1,5 +1,5 @@
-#include "./parser/read.h"
-#include "./parser/parse.h"
+#include "parser/read.h"
+#include "parser/parse.h"
 #include "libft.h"
 
 int	last_char_is_delim(char *str)
@@ -12,7 +12,7 @@ int	last_char_is_delim(char *str)
 	return (0);
 }
 
-int read_sign(char **pp)
+int	read_sign(char **pp)
 {
 	if (**pp == '-')
 	{
