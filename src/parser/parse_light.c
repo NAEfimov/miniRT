@@ -1,6 +1,6 @@
 #include "parser/parse.h"
 #include "parser/read.h"
-#include "utils/struct/struct.h"
+#include "utils/copy_struct/copy_struct.h"
 
 #define L_ARGS_NUM	4
 #define MIN_RATIO 0.0

@@ -1,7 +1,7 @@
 #include "parser/parse.h"
 #include "parser/read.h"
 #include "utils/print/print.h"
-#include "utils/struct/struct.h"
+#include "utils/copy_struct/copy_struct.h"
 
 #define A_ARGS_NUM	3
 #define MIN_RATIO 0.0
