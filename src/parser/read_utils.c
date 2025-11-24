@@ -2,12 +2,23 @@
 #include "parser/parse.h"
 #include "libft.h"
 
-int	last_char_is_delim(char *str)
-{
-	int	i;
+#define COMMA_CHAR	','
+#define COMMAS_NUM	2
 
-	i = ft_strlen(str);
-	if (i > 0 && str[i - 1] == VEC_DELIMETER)
+int	cheack_commas(char *str)
+{
+	int	res;
+
+	if (!str)
+		return (1);
+	res = 0;
+	while(*str)
+	{
+		if (*str == COMMA_CHAR)
+			++res;
+		++str;
+	}
+	if (res != COMMAS_NUM)
 		return (1);
 	return (0);
 }
