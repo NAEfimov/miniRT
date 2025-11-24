@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:08:49 by nefimov           #+#    #+#             */
-/*   Updated: 2024/11/21 18:13:59 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/11/21 18:01:00 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!new)
+	if (!lst || !new)
 		return ;
 	if (!*lst)
 	{

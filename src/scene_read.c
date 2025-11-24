@@ -1,47 +1,46 @@
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <errno.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 #include "main.h"
 #include "libft.h"
+#include "parser/parse.h"
+#include "utils/print/print.h"
 
-int		open_file(char *fname);
-int		init_scene(t_scene *scene);
-void	parse_line(t_scene *scene, char *line);
-void	skip_whitespaces(char **str_ptr);
+static int		open_file(char *fname);
+static int		init_scene(t_scene *scene);
+// void	parse_line(t_scene *scene, char *line);
 
 // Read scene elements from file
 int	read_scene(t_scene *scene, char *fname)
 {
 	int		fd;
 	char	*line;
-	char	*w_line;
 
 	fd = open_file(fname);
 	if (init_scene(scene))
 		return (1);
-	
+
 	line = get_next_line(fd);
 	while (line)
 	{
-		w_line = line;
-		skip_whitespaces(&w_line);
-		if (*w_line != '\n' && *w_line != '\0')
-		{
-			ft_putstr_fd(w_line, 0);
-		}
+		scene->line = line;
+		parse_line(scene, line);
 		free(line);
 		line = get_next_line(fd);
 	}
+	scene->line = NULL;
 	ft_putstr_fd("\n", 0);
+	print_scene(scene);
 
 	close(fd);
 	return (0);
 }
 
 // Initialise scene struct
-int init_scene(t_scene *scene)
+static int init_scene(t_scene *scene)
 {
 	scene->height = HEIGHT;
 	scene->width = WIDTH;
@@ -51,20 +50,21 @@ int init_scene(t_scene *scene)
 	scene->plane = NULL;
 	scene->cyl = NULL;
 	scene->sphere = NULL;
+	scene->line = NULL;
 	scene->image = malloc(scene->width * scene->height * sizeof(int32_t));
 	if (scene->image == NULL)
-		return(1);
+		return (1);
 	return (0);
 }
 
 // Open file for read
-int open_file(char *fname)
+static int	open_file(char *fname)
 {
-	int fd;	
+	int	fd;
 
 	if (fname == NULL)
 	{
-		ft_putstr_fd("open_file(): NULL input", 2);
+		ft_putstr_fd("open_file(): NULL input\n", 2);
 		exit(1);
 	}
 	fd = open(fname, O_RDONLY);
@@ -77,19 +77,4 @@ int open_file(char *fname)
 		exit(1);
 	}
 	return (fd);
-}
-
-// Skip whilespaces and tabs from the begginig of the line
-// and move original pointer
-void	skip_whitespaces(char **str_ptr)
-{
-	while (**str_ptr == ' ' || **str_ptr == '\t')
-		++(*str_ptr);
-}
-
-// 
-void	parse_line(t_scene *scene, char *line)
-{
-	(void)scene;
-	(void)line;
 }
