@@ -31,6 +31,7 @@ int	read_scene(t_scene *scene, char *fname)
 		free(line);
 		line = get_next_line(fd);
 	}
+	scene->line = NULL;
 	ft_putstr_fd("\n", 0);
 	print_scene(scene);
 
