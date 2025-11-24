@@ -5,7 +5,7 @@ int	read_color(t_color *color, char *word)
 {
 	char	**words;
 
-	if (last_char_is_delim(word))
+	if (cheack_commas(word))
 		return (1);
 	words = ft_split(word, VEC_DELIMETER);
 	if (!words)
