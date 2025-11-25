@@ -4,7 +4,7 @@
 #endif
 
 /**
- * Calculates the camera's orthonormal basis vectors
+ * Calculates the camera's orthonormal basis vectors.
  *
  * @param cam Pointer to camera structure
  *
@@ -28,7 +28,7 @@ t_cam_basis get_cam_basis(t_camera *cam)
 }
 
 /**
- * Returns pixel offsets for (x, y)
+ * Returns pixel offsets for (x, y).
  *
  * @param scene Scene pointer
  * @param x Pixel x coordinate
@@ -50,7 +50,7 @@ t_pixel_offset get_pixel_offset(t_scene *scene, int x, int y)
 }
 
 /**
- * Calculates the camera's orthonormal basis vectors (forward, right, up)
+ * Calculates the camera's orthonormal basis vectors (forward, right, up).
  *
  * @param cam Pointer to camera structure
  *

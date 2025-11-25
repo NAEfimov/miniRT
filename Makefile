@@ -10,6 +10,8 @@ LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a -ldl -lglfw -pthread -lm
 
 SRCS_D	:= ./src
 SRCS	:= main.c \
+		   vector.c \
+		   ray.c \
 		   scene_clean.c \
 		   scene_draw.c \
 		   scene_read.c \

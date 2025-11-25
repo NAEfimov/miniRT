@@ -2,6 +2,7 @@
 
 /**
  * Adds two vectors component-wise.
+ * 
  * @param a First vector
  * @param b Second vector
  * 
@@ -19,6 +20,7 @@ t_vec	vec_add(t_vec a, t_vec b)
 
 /**
  * Multiplies a vector by a scalar.
+ * 
  * @param a Vector
  * @param s Scalar
  * 
@@ -36,6 +38,7 @@ t_vec	vec_scl(t_vec a, double s)
 
 /**
  * Normalizes a vector to length 1.
+ * 
  * @param v Vector
  * 
  * @return Resulting normalized vector or original (if length is 0)
@@ -70,4 +73,22 @@ t_vec	vec_crs(t_vec a, t_vec b)
 	result.y = a.z * b.x - a.x * b.z;
 	result.z = a.x * b.y - a.y * b.x;
 	return (result);
+}
+
+/**
+ * Subtracts vector b from vector a.
+ *
+ * @param a First vector
+ * @param b Second vector
+ *
+ * @return Resulting vector (a - b)
+ */
+t_vec vec_sub(t_vec a, t_vec b)
+{
+    t_vec result;
+
+    result.x = a.x - b.x;
+    result.y = a.y - b.y;
+    result.z = a.z - b.z;
+    return result;
 }
