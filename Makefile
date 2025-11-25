@@ -10,12 +10,11 @@ LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a -ldl -lglfw -pthread -lm
 
 SRCS_D	:= ./src
 SRCS	:= main.c \
-		   vector.c \
 		   ray.c \
-		   scene_clean.c \
-		   scene_draw.c \
-		   scene_read.c \
-		   scene_trace.c \
+		   scene/scene_clean.c \
+		   scene/scene_draw.c \
+		   scene/scene_read.c \
+		   scene/scene_trace.c \
 		   check_args.c \
 		   parser/parse_ambient_light.c \
 		   parser/parse_camera.c \
@@ -53,7 +52,15 @@ SRCS	:= main.c \
 		   utils/copy_struct/copy_sphere.c \
 		   utils/copy_struct/copy_plane.c \
 		   utils/copy_struct/copy_cylinder.c \
-		   utils/copy_struct/copy_scene.c
+		   utils/copy_struct/copy_scene.c \
+		   vector/vector_add.c \
+           vector/vector_cross.c \
+           vector/vector_dot.c \
+           vector/vector_length.c \
+           vector/vector_normalize.c \
+           vector/vector_scalar.c \
+           vector/vector_squared_length.c \
+           vector/vector_substract.c
 
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))

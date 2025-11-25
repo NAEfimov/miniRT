@@ -1,4 +1,4 @@
-#include "../include/vector.h"
+#include "../include/vector/vector.h"
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
@@ -11,7 +11,7 @@
  * @return Camera basis structure (forward, right, up)
  *
  */
-t_cam_basis get_cam_basis(t_camera *cam)
+static t_cam_basis get_cam_basis(t_camera *cam)
 {
 	t_cam_basis	basis;
 	t_vec		world_up;
@@ -36,7 +36,7 @@ t_cam_basis get_cam_basis(t_camera *cam)
  *
  * @return Structure with px and py
  */
-t_pixel_offset get_pixel_offset(t_scene *scene, int x, int y)
+static t_pixel_offset get_pixel_offset(t_scene *scene, int x, int y)
 {
 	t_pixel_offset	off;
 	double			aspect;
@@ -58,7 +58,6 @@ t_pixel_offset get_pixel_offset(t_scene *scene, int x, int y)
  */
 t_ray generate_ray(t_scene *scene, int x, int y)
 {
-
 	t_ray			ray;
 	t_cam_basis		basis;
 	t_pixel_offset	off;
