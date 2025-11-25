@@ -15,7 +15,6 @@ SRCS	:= main.c \
 		   scene/scene_draw.c \
 		   scene/scene_read.c \
 		   scene/scene_trace.c \
-		   check_args.c \
 		   parser/parse_ambient_light.c \
 		   parser/parse_camera.c \
 		   parser/parse_cylinder.c \
@@ -33,6 +32,16 @@ SRCS	:= main.c \
 		   parser/read_normal.c \
 		   parser/read_vec.c \
 		   parser/read_utils.c \
+		   utils/checker/check_args.c \
+		   utils/copy_struct/copy_color.c \
+		   utils/copy_struct/copy_vec.c \
+		   utils/copy_struct/copy_amb_light.c \
+		   utils/copy_struct/copy_camera.c \
+		   utils/copy_struct/copy_light.c \
+		   utils/copy_struct/copy_sphere.c \
+		   utils/copy_struct/copy_plane.c \
+		   utils/copy_struct/copy_cylinder.c \
+		   utils/copy_struct/copy_scene.c \
 		   utils/print/print_scene.c \
 		   utils/print/print_ambient_light.c \
 		   utils/print/print_camera.c \
@@ -44,15 +53,6 @@ SRCS	:= main.c \
 		   utils/print/print_color.c \
 		   utils/print/print_double.c \
 		   utils/print/print_uint32.c \
-		   utils/copy_struct/copy_color.c \
-		   utils/copy_struct/copy_vec.c \
-		   utils/copy_struct/copy_amb_light.c \
-		   utils/copy_struct/copy_camera.c \
-		   utils/copy_struct/copy_light.c \
-		   utils/copy_struct/copy_sphere.c \
-		   utils/copy_struct/copy_plane.c \
-		   utils/copy_struct/copy_cylinder.c \
-		   utils/copy_struct/copy_scene.c \
 		   vector/vector_add.c \
            vector/vector_cross.c \
            vector/vector_dot.c \
