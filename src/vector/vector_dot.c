@@ -8,7 +8,7 @@
  *
  * @return Scalar dot product
  */
-double vec_dot(t_vec a, t_vec b)
+double	vec_dot(t_vec a, t_vec b)
 {
-    return a.x * b.x + a.y * b.y + a.z * b.z;
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }

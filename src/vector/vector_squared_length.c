@@ -7,7 +7,7 @@
  *
  * @return Squared length
  */
-double vec_sq_len(t_vec v)
+double	vec_sq_len(t_vec v)
 {
-    return v.x * v.x + v.y * v.y + v.z * v.z;
+	return (v.x * v.x + v.y * v.y + v.z * v.z);
 }

@@ -7,7 +7,7 @@
  *
  * @return Length
  */
-double vec_len(t_vec v)
+double	vec_len(t_vec v)
 {
-    return sqrt(vec_sq_len(v));
+	return (sqrt(vec_sq_len(v)));
 }

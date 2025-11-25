@@ -2,10 +2,10 @@
 
 /**
  * Multiplies a vector by a scalar.
- * 
+ *
  * @param a Vector
  * @param s Scalar
- * 
+ *
  * @return Resulting vector (a * s)
  */
 t_vec	vec_scl(t_vec a, double s)
