@@ -1,7 +1,7 @@
 #include "utils/print/print.h"
 #include <stdio.h>
 
-void	print_color(t_color *color)
+void	print_rgb_color(t_rgb_color *color)
 {
 	if (!color)
 	{

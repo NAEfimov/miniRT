@@ -10,5 +10,5 @@ void	print_ambient_light(t_amb_light *a_light)
 	}
 	printf("Ambient Light:\n");
 	print_double(a_light->ratio, "  Ratio");
-	print_color(&a_light->color);
+	print_rgb_color(&a_light->color);
 }

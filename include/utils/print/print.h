@@ -12,7 +12,7 @@ void	print_sphere(t_sphere *sphere);
 void	print_plane(t_plane *plane);
 void	print_cylinder(t_cylinder *cyl);
 
-void	print_color(t_color *color);
+void	print_rgb_color(t_rgb_color *color);
 void	print_vec(t_vec *vec, char *msg);
 void	print_double(double value, char *msg);
 void	print_uint32(uint32_t value, char *msg);

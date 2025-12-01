@@ -9,12 +9,12 @@
 # define HEIGHT		256
 # define COLOR_NUM	3
 
-typedef struct s_color
+typedef struct s_rgb_color
 {
 	uint8_t	r;
 	uint8_t	g;
 	uint8_t	b;
-}	t_color;
+}	t_rgb_color;
 
 typedef struct s_vec
 {
@@ -26,7 +26,7 @@ typedef struct s_vec
 typedef struct s_amb_light
 {
 	double	ratio;
-	t_color	color;
+	t_rgb_color	color;
 }	t_amb_light;
 
 typedef struct s_camera
@@ -40,21 +40,21 @@ typedef struct s_light
 {
 	t_vec	coord;
 	double	brigh;
-	t_color	color;
+	t_rgb_color	color;
 }	t_light;
 
 typedef struct s_sphere
 {
 	t_vec	coord;
 	double	diameter;
-	t_color	color;
+	t_rgb_color	color;
 }	t_sphere;
 
 typedef struct s_plane
 {
 	t_vec	coord;
 	t_vec	normal;
-	t_color	color;
+	t_rgb_color	color;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -63,7 +63,7 @@ typedef struct s_cylinder
 	t_vec	normal;
 	double	diameter;
 	double	height;
-	t_color	color;
+	t_rgb_color	color;
 }	t_cylinder;
 
 typedef struct s_scene
