@@ -53,6 +53,7 @@ SRCS	:= main.c \
 			utils/print/print_color.c \
 			utils/print/print_double.c \
 			utils/print/print_uint32.c \
+			utils/color/color.c \
 			vector/vector_add.c \
         	vector/vector_cross.c \
         	vector/vector_dot.c \

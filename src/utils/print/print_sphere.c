@@ -11,5 +11,5 @@ void	print_sphere(t_sphere *sphere)
 	printf("Sphere:\n");
 	print_vec(&sphere->coord, "  Coord");
 	print_double(sphere->diameter, "  Diameter");
-	print_rgb_color(&sphere->color);
+	print_color(&sphere->color);
 }

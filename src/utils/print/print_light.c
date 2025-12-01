@@ -11,5 +11,5 @@ void	print_light(t_light *light)
 	printf("Light:\n");
 	print_vec(&light->coord, "  Coord");
 	print_double(light->brigh, "  Brightness");
-	print_rgb_color(&light->color);
+	print_color(&light->color);
 }

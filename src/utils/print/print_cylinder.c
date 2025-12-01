@@ -13,5 +13,5 @@ void	print_cylinder(t_cylinder *cyl)
 	print_vec(&cyl->normal, "  Normal");
 	print_double(cyl->diameter, "  Diameter");
 	print_double(cyl->height, "  Height");
-	print_rgb_color(&cyl->color);
+	print_color(&cyl->color);
 }

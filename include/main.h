@@ -26,7 +26,7 @@ typedef struct s_vec
 typedef struct s_amb_light
 {
 	double	ratio;
-	t_rgb_color	color;
+	t_vec	color;
 }	t_amb_light;
 
 typedef struct s_camera
@@ -40,21 +40,21 @@ typedef struct s_light
 {
 	t_vec	coord;
 	double	brigh;
-	t_rgb_color	color;
+	t_vec	color;
 }	t_light;
 
 typedef struct s_sphere
 {
 	t_vec	coord;
 	double	diameter;
-	t_rgb_color	color;
+	t_vec	color;
 }	t_sphere;
 
 typedef struct s_plane
 {
 	t_vec	coord;
 	t_vec	normal;
-	t_rgb_color	color;
+	t_vec	color;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -63,7 +63,7 @@ typedef struct s_cylinder
 	t_vec	normal;
 	double	diameter;
 	double	height;
-	t_rgb_color	color;
+	t_vec	color;
 }	t_cylinder;
 
 typedef struct s_scene
