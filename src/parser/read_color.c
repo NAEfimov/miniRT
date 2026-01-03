@@ -1,6 +1,15 @@
 #include "parser/read.h"
 #include "parser/parse.h"
 
+/**
+ * Reads a color from a comma-separated string and stores it as a normalized vector.
+ *
+ * @param color Pointer to the vector to store the color
+ * @param word The input string containing the color values
+ *
+ * @return 0 on success, 1 on failure
+ *
+ */
 int	read_color(t_vec *color, char *word)
 {
 	char		**words;

@@ -6,6 +6,15 @@
 #define MIN_RATIO 0.0
 #define MAX_RATIO 1.0
 
+/**
+ * Parses the light from the input words and adds it to the scene.
+ *
+ * @param scene Pointer to the scene structure
+ * @param words Array of strings representing the parsed input line
+ *
+ * @return void
+ *
+ */
 void	parse_light(t_scene *scene, char **words)
 {
 	t_light	r;

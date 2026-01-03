@@ -1,5 +1,14 @@
 #include "parser/read.h"
 
+/**
+ * Parses a string into an unsigned 32-bit integer value.
+ *
+ * @param num Pointer to the uint32_t to store the parsed value
+ * @param word The input string to parse
+ *
+ * @return 0 on success, 1 on failure
+ *
+ */
 int	read_uint32(uint32_t *num, char *word)
 {
 	int	result;

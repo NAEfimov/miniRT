@@ -5,6 +5,15 @@
 
 static int	is_normalized(t_vec *vec);
 
+/**
+ * Reads a normalized vector (normal) from a string.
+ *
+ * @param norm Pointer to the vector to store the normal
+ * @param word The input string containing the vector values
+ *
+ * @return 0 on success, 1 on failure
+ *
+ */
 int	read_normal(t_vec *norm, char *word)
 {
 	t_vec	vec;

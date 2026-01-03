@@ -3,6 +3,15 @@
 static void	parse_int_part(double *result, char **ptr);
 static void	parse_fractal_part(double *result, char **ptr);
 
+/**
+ * Parses a string into a double value.
+ *
+ * @param num Pointer to the double to store the parsed value
+ * @param ptr The input string to parse
+ *
+ * @return 0 on success, 1 on failure
+ *
+ */
 int	read_double(double *num, char *ptr)
 {
 	int		sign;

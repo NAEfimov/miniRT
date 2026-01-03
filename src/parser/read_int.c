@@ -1,5 +1,14 @@
 #include "parser/read.h"
 
+/**
+ * Parses a string into an integer value.
+ *
+ * @param num Pointer to the int to store the parsed value
+ * @param word The input string to parse
+ *
+ * @return 0 on success, 1 on failure
+ *
+ */
 int	read_int(int *num, char *word)
 {
 	int	sign;
