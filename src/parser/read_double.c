@@ -31,6 +31,12 @@ int	read_double(double *num, char *ptr)
 	return (0);
 }
 
+/**
+ * Parses the integer part of a double from the string.
+ *
+ * @param result Pointer to the double to accumulate the integer value
+ * @param ptr Pointer to the current position in the string
+ */
 static void	parse_int_part(double *result, char **ptr)
 {
 	while (**ptr >= '0' && **ptr <= '9')
@@ -40,6 +46,12 @@ static void	parse_int_part(double *result, char **ptr)
 	}
 }
 
+/**
+ * Parses the fractional part of a double from the string.
+ *
+ * @param result Pointer to the double to accumulate the fractional value
+ * @param ptr Pointer to the current position in the string
+ */
 static void	parse_fractal_part(double *result, char **ptr)
 {
 	double	frac;

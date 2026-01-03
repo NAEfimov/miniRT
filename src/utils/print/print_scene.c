@@ -2,6 +2,11 @@
 #include "libft.h"
 #include <stdio.h>
 
+/**
+ * Prints complete scene information to stdout.
+ *
+ * @param scene Pointer to scene structure to print
+ */
 void	print_scene(t_scene *scene)
 {
 	if (!scene)

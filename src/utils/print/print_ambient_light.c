@@ -1,6 +1,11 @@
 #include "utils/print/print.h"
 #include <stdio.h>
 
+/**
+ * Prints ambient light information to stdout.
+ *
+ * @param a_light Pointer to ambient light structure to print
+ */
 void	print_ambient_light(t_amb_light *a_light)
 {
 	if (!a_light)

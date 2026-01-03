@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * Traces the scene by filling the image buffer with test data.
+ *
+ * @param scene Pointer to scene structure containing image buffer
+ *
+ * @return 0 on success
+ */
 int	trace_scene(t_scene *scene)
 {
 	int32_t	i;
