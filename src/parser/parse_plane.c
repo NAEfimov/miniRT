@@ -4,6 +4,15 @@
 
 #define PL_ARGS_NUM	4
 
+/**
+ * Parses the plane from the input words and adds it to the scene.
+ *
+ * @param scene Pointer to the scene structure
+ * @param words Array of strings representing the parsed input line
+ *
+ * @return void
+ *
+ */
 void	parse_plane(t_scene *scene, char **words)
 {
 	t_plane	p;

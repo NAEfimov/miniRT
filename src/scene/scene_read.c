@@ -13,7 +13,14 @@ static int		open_file(char *fname);
 static int		init_scene(t_scene *scene);
 // void	parse_line(t_scene *scene, char *line);
 
-// Read scene elements from file
+/**
+ * Reads scene elements from a file and populates the scene structure.
+ *
+ * @param scene Pointer to scene structure to populate
+ * @param fname Name of the file to read from
+ *
+ * @return 0 on success, 1 on failure
+ */
 int	read_scene(t_scene *scene, char *fname)
 {
 	int		fd;
@@ -39,7 +46,13 @@ int	read_scene(t_scene *scene, char *fname)
 	return (0);
 }
 
-// Initialise scene struct
+/**
+ * Initializes the scene structure with default values and allocates image buffer.
+ *
+ * @param scene Pointer to scene structure to initialize
+ *
+ * @return 0 on success, 1 on failure (memory allocation error)
+ */
 static int init_scene(t_scene *scene)
 {
 	scene->height = HEIGHT;
@@ -57,7 +70,13 @@ static int init_scene(t_scene *scene)
 	return (0);
 }
 
-// Open file for read
+/**
+ * Opens a file for reading and handles errors.
+ *
+ * @param fname Name of the file to open
+ *
+ * @return File descriptor on success, exits on failure
+ */
 static int	open_file(char *fname)
 {
 	int	fd;

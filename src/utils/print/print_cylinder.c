@@ -1,6 +1,11 @@
 #include "utils/print/print.h"
 #include <stdio.h>
 
+/**
+ * Prints cylinder information to stdout.
+ *
+ * @param cyl Pointer to cylinder structure to print
+ */
 void	print_cylinder(t_cylinder *cyl)
 {
 	if (!cyl)

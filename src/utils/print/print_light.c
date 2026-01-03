@@ -1,6 +1,11 @@
 #include "utils/print/print.h"
 #include <stdio.h>
 
+/**
+ * Prints light information to stdout.
+ *
+ * @param light Pointer to light structure to print
+ */
 void	print_light(t_light *light)
 {
 	if (!light)

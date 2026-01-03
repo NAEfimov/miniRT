@@ -1,7 +1,13 @@
 #include "main.h"
 #include "math.h"
 
-// Helper to clamp values between 0.0 and 1.0
+/**
+ * Clamps a double value between 0.0 and 1.0.
+ *
+ * @param value The value to clamp
+ *
+ * @return The clamped value
+ */
 static double clamp(double value)
 {
     if (value < 0.0) return 0.0;
@@ -9,7 +15,13 @@ static double clamp(double value)
     return value;
 }
 
-// Convert 0.0-1.0 RGB doubles to MLX42 uint32_t RGBA
+/**
+ * Converts RGB color values (0.0-1.0) to MLX42 uint32_t RGBA format.
+ *
+ * @param color Pointer to vector containing RGB values (x=r, y=g, z=b)
+ *
+ * @return MLX42 color in uint32_t format
+ */
 uint32_t to_mlx_color(t_vec *color)
 {
     uint8_t r;
@@ -26,6 +38,13 @@ uint32_t to_mlx_color(t_vec *color)
     return ((r << 24) | (g << 16) | (b << 8) | a);
 }
 
+/**
+ * Converts RGB color values (0.0-1.0) to t_rgb_color structure.
+ *
+ * @param color Pointer to vector containing RGB values (x=r, y=g, z=b)
+ *
+ * @return RGB color structure with uint8_t components
+ */
 t_rgb_color to_rgb_color(t_vec *color)
 {
     t_rgb_color rgb_color;

@@ -5,6 +5,14 @@
 #define COMMA_CHAR	','
 #define COMMAS_NUM	2
 
+/**
+ * Checks if a string contains exactly the required number of commas.
+ *
+ * @param str The input string to check
+ *
+ * @return 0 if valid, 1 if invalid
+ *
+ */
 int	cheack_commas(char *str)
 {
 	int	res;
@@ -23,6 +31,14 @@ int	cheack_commas(char *str)
 	return (0);
 }
 
+/**
+ * Parses the sign from the beginning of a string.
+ *
+ * @param pp Pointer to the string pointer to advance
+ *
+ * @return 1 for positive, -1 for negative
+ *
+ */
 int	read_sign(char **pp)
 {
 	if (**pp == '-')

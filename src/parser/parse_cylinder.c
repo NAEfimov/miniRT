@@ -4,6 +4,15 @@
 
 #define CY_ARGS_NUM	6
 
+/**
+ * Parses the cylinder from the input words and adds it to the scene.
+ *
+ * @param scene Pointer to the scene structure
+ * @param w Array of strings representing the parsed input line
+ *
+ * @return void
+ *
+ */
 void	parse_cylinder(t_scene *scene, char **w)
 {
 	t_cylinder	c;

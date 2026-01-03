@@ -4,9 +4,13 @@
 
 static int	check_file_extension(char *str);
 
-// Checking arguments for correct input
-// Return 0 if the first argument is .rt file
-// Return 1 in other scenarious
+/**
+ * Checks command line arguments for correct input.
+ * Validates that exactly one argument is provided and it has a .rt extension.
+ *
+ * @param argc Number of command line arguments
+ * @param argv Array of command line arguments
+ */
 void	check_args(int argc, char **argv)
 {
 	if (argc <= 1)
@@ -21,6 +25,13 @@ void	check_args(int argc, char **argv)
 	}
 }
 
+/**
+ * Checks if the file extension is .rt.
+ *
+ * @param str Filename string to check
+ *
+ * @return 0 if extension is .rt, 1 otherwise
+ */
 static int	check_file_extension(char *str)
 {
 	char	*ext_ptr;

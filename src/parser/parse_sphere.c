@@ -5,6 +5,15 @@
 #define SP_ARGS_NUM	4
 #define MIN_DIAMETER 0.0
 
+/**
+ * Parses the sphere from the input words and adds it to the scene.
+ *
+ * @param scene Pointer to the scene structure
+ * @param words Array of strings representing the parsed input line
+ *
+ * @return void
+ *
+ */
 void	parse_sphere(t_scene *scene, char **words)
 {
 	t_sphere	s;
