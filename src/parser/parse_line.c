@@ -4,6 +4,15 @@
 void	rm_nline_char(char **str_ptr);
 
 // Parce line with ft_split
+/**
+ * Parses a line from the scene file and processes the scene element.
+ *
+ * @param scene Pointer to the scene structure
+ * @param line The input line string to parse
+ *
+ * @return void
+ *
+ */
 void	parse_line(t_scene *scene, char *line)
 {
 	char	**words;

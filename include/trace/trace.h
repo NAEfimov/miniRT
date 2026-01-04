@@ -1,5 +1,8 @@
-#include "main.h"
-#include "vector/vector.h"
+#ifndef TRACE_H
+# define TRACE_H
+
+# include "main.h"
+# include "vector/vector.h"
 
 typedef struct s_ray
 {
@@ -21,3 +24,5 @@ typedef struct s_pixel_offset
 }	t_pixel_offset;
 
 t_ray	generate_ray(t_scene *scene, int x, int y);
+
+#endif

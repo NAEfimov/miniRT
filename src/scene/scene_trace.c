@@ -12,6 +12,13 @@ static uint32_t	trace_pixel(t_ray ray, t_sphere *sphere, t_plane *plane)
 	return 0x222222FF;
 }
 
+/**
+ * Traces the scene by filling the image buffer with test data.
+ *
+ * @param scene Pointer to scene structure containing image buffer
+ *
+ * @return 0 on success
+ */
 int	trace_scene(t_scene *scene)
 {
 	t_sphere	*sphere;

@@ -1,6 +1,15 @@
 #include "parser/parse.h"
 #include "libft.h"
 
+/**
+ * Parses a scene element based on the identifier in the words array.
+ *
+ * @param scene Pointer to the scene structure
+ * @param words Array of strings representing the parsed input line
+ *
+ * @return void
+ *
+ */
 void	parse_scene_element(t_scene *scene, char **words)
 {
 	if (ft_strcmp(words[0], "A") == 0)

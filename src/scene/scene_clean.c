@@ -2,6 +2,13 @@
 #include "libft.h"
 #include "main.h"
 
+/**
+ * Frees all dynamically allocated memory in the scene structure.
+ *
+ * @param scene Pointer to scene structure to clean
+ *
+ * @return 0 on success
+ */
 int	clean_scene(t_scene *scene)
 {
 	if (scene->image)
@@ -23,6 +30,11 @@ int	clean_scene(t_scene *scene)
 	return (0);
 }
 
+/**
+ * Frees an array of strings (words).
+ *
+ * @param words Array of strings to free
+ */
 void	clean_words(char **words)
 {
 	unsigned int	i;

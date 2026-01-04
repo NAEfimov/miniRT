@@ -2,6 +2,15 @@
 #include "parser/parse.h"
 #include "libft.h"
 
+/**
+ * Reads a 3D vector from a comma-separated string.
+ *
+ * @param vec Pointer to the vector to store the values
+ * @param word The input string containing the vector values
+ *
+ * @return 0 on success, 1 on failure
+ *
+ */
 int	read_vec(t_vec *vec, char *word)
 {
 	char	**words;

@@ -5,7 +5,9 @@
 #include "main.h"
 #include "MLX42/MLX42.h"
 
-// Exit the program as failure.
+/**
+ * Exits the program with an error message on MLX42 failure.
+ */
 static void	ft_error(void)
 {
 	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
@@ -17,6 +19,13 @@ static void	ft_error(void)
 // 	// const mlx_t* mlx = param;
 // }
 
+/**
+ * Draws the scene using MLX42 library and displays it in a window.
+ *
+ * @param scene Pointer to scene structure containing image data
+ *
+ * @return 0 on success
+ */
 int	draw_scene(t_scene *scene)
 {
 	mlx_t		*mlx;

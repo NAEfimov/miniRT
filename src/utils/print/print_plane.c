@@ -1,6 +1,11 @@
 #include "utils/print/print.h"
 #include <stdio.h>
 
+/**
+ * Prints plane information to stdout.
+ *
+ * @param plane Pointer to plane structure to print
+ */
 void	print_plane(t_plane *plane)
 {
 	if (!plane)

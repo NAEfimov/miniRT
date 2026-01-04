@@ -1,6 +1,11 @@
 #include "utils/print/print.h"
 #include <stdio.h>
 
+/**
+ * Prints camera information to stdout.
+ *
+ * @param camera Pointer to camera structure to print
+ */
 void	print_camera(t_camera *camera)
 {
 	if (!camera)

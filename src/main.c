@@ -1,6 +1,14 @@
 #include "main.h"
 #include "libft.h"
 
+/**
+ * Main entry point of the miniRT program.
+ *
+ * @param argc Number of command line arguments
+ * @param argv Array of command line arguments
+ *
+ * @return 0 on success
+ */
 int	main(int argc, char *argv[])
 {
 	t_scene	scene;
