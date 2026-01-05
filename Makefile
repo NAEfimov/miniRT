@@ -63,7 +63,8 @@ SRCS	:= main.c \
         	vector/vector_normalize.c \
         	vector/vector_scalar.c \
         	vector/vector_squared_length.c \
-        	vector/vector_substract.c
+        	vector/vector_substract.c \
+			normal/normal.c
 
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))

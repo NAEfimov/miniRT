@@ -35,7 +35,8 @@ uint32_t to_mlx_color(t_vec *color)
     a = 255;
 
     // Pack bytes: R G B A
-    return ((r << 24) | (g << 16) | (b << 8) | a);
+	return ((a << 24) | (b << 16) | (g << 8) | r);
+    // return ((r << 24) | (g << 16) | (b << 8) | a);
 }
 
 /**

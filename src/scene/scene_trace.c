@@ -1,14 +1,28 @@
 #include "main.h"
 #include "../include/figures/figures.h"
+#include "utils/color/color.h"
+#include "vector/vector.h"
+#include "normal/normal.h"
 
 static uint32_t	trace_pixel(t_ray ray, t_sphere *sphere, t_plane *plane)
 {
-	if (sphere && hit_sphere(ray, sphere))
-		return (sphere->color.r << 24) |
-			   (sphere->color.g << 16) | (sphere->color.b << 8) | 255;
+	double	t;
+	t_vec	point;
+	t_vec	norm_color;
+
+	if (sphere && hit_sphere_t(ray, sphere) >= 0)
+	{
+		t = hit_sphere_t(ray, sphere);
+		if (t >= 0)
+		{
+			point = vec_add(ray.origin, vec_scl(ray.direction, t));
+			norm_color = sphere_normal_color(point, sphere);
+			return (to_mlx_color(&norm_color));
+		}
+		// return (to_mlx_color(&sphere->color));
+	}
 	if (plane && hit_plane(ray, plane))
-		return (plane->color.r << 24) |
-			   (plane->color.g << 16) | (plane->color.b << 8) | 255;
+		return (to_mlx_color(&plane->color));
 	return 0x222222FF;
 }
 
