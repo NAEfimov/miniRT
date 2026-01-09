@@ -21,7 +21,7 @@ static int hits_any_object(t_scene *scene, t_ray ray, double max_t)
     while (current)
     {
         t_sphere *sph = (t_sphere *)current->content;
-        double t = hit_sphere_t(ray, sph);
+        double t = hit_sphere(ray, sph);
         if (t > 0.001 && t < max_t)
             return 1;
         current = current->next;
@@ -32,7 +32,7 @@ static int hits_any_object(t_scene *scene, t_ray ray, double max_t)
     while (current)
     {
         t_plane *pln = (t_plane *)current->content;
-        double t = hit_plane_t(ray, pln);
+        double t = hit_plane(ray, pln);
         if (t > 0.001 && t < max_t)
             return 1;
         current = current->next;
@@ -60,7 +60,7 @@ static void	min_sphere_t(t_list	*current, t_ray *ray, t_hit_point *hit)
 	while (current)
 	{
 		sph = (t_sphere *)current->content;
-		t = hit_sphere_t(*ray, sph);
+		t = hit_sphere(*ray, sph);
 		if (t > 0 && t < hit->min_t)
 		{
 			hit->min_t = t;
@@ -90,7 +90,7 @@ static void	min_plane_t(t_list	*current, t_ray *ray, t_hit_point *hit)
 	while (current)
 	{
 		pln = (t_plane *)current->content;
-		t = hit_plane_t(*ray, pln);
+		t = hit_plane(*ray, pln);
 		if (t > 0 && t < hit->min_t)
 		{
 			hit->min_t = t;
