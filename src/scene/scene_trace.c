@@ -5,7 +5,13 @@
 #include "vector/vector.h"
 #include "normal/normal.h"
 
-// Helper function to check if a ray hits any object within max_t
+/**
+ * @brief Checks if the given ray intersects any object in the scene within the specified maximum distance.
+ * @param scene Pointer to the scene structure.
+ * @param ray The ray to test for intersections.
+ * @param max_t The maximum distance to check for intersections.
+ * @return 1 if the ray hits any object, 0 otherwise.
+ */
 static int hits_any_object(t_scene *scene, t_ray ray, double max_t)
 {
     t_list *current;
@@ -39,6 +45,12 @@ static int hits_any_object(t_scene *scene, t_ray ray, double max_t)
     return 0;
 }
 
+/**
+ * @brief Finds the closest intersection with spheres and updates the hit point if closer.
+ * @param current Pointer to the list of spheres.
+ * @param ray Pointer to the ray.
+ * @param hit Pointer to the hit point structure to update.
+ */
 static void	min_sphere_t(t_list	*current, t_ray *ray, t_hit_point *hit)
 {
 	double		t;
@@ -64,6 +76,12 @@ static void	min_sphere_t(t_list	*current, t_ray *ray, t_hit_point *hit)
 	}
 }
 
+/**
+ * @brief Finds the closest intersection with planes and updates the hit point if closer.
+ * @param current Pointer to the list of planes.
+ * @param ray Pointer to the ray.
+ * @param hit Pointer to the hit point structure to update.
+ */
 static void	min_plane_t(t_list	*current, t_ray *ray, t_hit_point *hit)
 {
 	double		t;
@@ -87,6 +105,12 @@ static void	min_plane_t(t_list	*current, t_ray *ray, t_hit_point *hit)
 	}
 }
 
+/**
+ * @brief Calculates and adds the ambient light contribution to the final color.
+ * @param scene Pointer to the scene.
+ * @param final_color Pointer to the final color vector to modify.
+ * @param hit Pointer to the hit point.
+ */
 void	calc_ambient_light(t_scene *scene, t_vec *final_color, t_hit_point *hit)
 {
 	t_vec	ambient;
@@ -98,7 +122,14 @@ void	calc_ambient_light(t_scene *scene, t_vec *final_color, t_hit_point *hit)
 	}
 }
 
-void	calc_light(t_scene *scene, t_vec *final_color, t_hit_point *hit)
+/**
+ * @brief Calculates and adds diffuse and specular lighting contributions to the final color.
+ * @param scene Pointer to the scene.
+ * @param final_color Pointer to the final color vector to modify.
+ * @param hit Pointer to the hit point.
+ * @param ray Pointer to the viewing ray.
+ */
+void	calc_light(t_scene *scene, t_vec *final_color, t_hit_point *hit, t_ray *ray)
 {
 	t_vec	light_dir;
 	double	light_dist;
@@ -119,6 +150,7 @@ void	calc_light(t_scene *scene, t_vec *final_color, t_hit_point *hit)
 
 		if (!hits_any_object(scene, shadow_ray, light_dist))
 		{
+			double attenuation = 1.0 / (light_dist * light_dist);
 			double dot_nl = vec_dot(hit->normal, light_dir);
             if (dot_nl > 0)
             {
@@ -126,20 +158,25 @@ void	calc_light(t_scene *scene, t_vec *final_color, t_hit_point *hit)
                 *final_color = vec_add(*final_color, vec_mul(diffuse, hit->obj_color));
             }
 
-            // // Specular (optional)
-            // t_vec view_dir = vec_nrm(vec_sub(ray->origin, hit->point));
-            // t_vec reflect_dir = vec_sub(vec_scl(hit->normal, 2 * dot_nl), light_dir);
-            // double dot_rv = vec_dot(reflect_dir, view_dir);
-            // if (dot_rv > 0)
-            // {
-            //     double shininess = 32.0;
-            //     t_vec specular = vec_scl(scene->light->color, scene->light->brigh * pow(dot_rv, shininess) * attenuation);
-            //     *final_color = vec_add(*final_color, specular);
-            // }
+            // Specular
+            t_vec view_dir = vec_nrm(vec_sub(ray->origin, hit->point));
+            t_vec reflect_dir = vec_sub(vec_scl(hit->normal, 2 * dot_nl), light_dir);
+            double dot_rv = vec_dot(reflect_dir, view_dir);
+            if (dot_rv > 0)
+            {
+                t_vec specular = vec_scl(scene->light->color, scene->light->brigh * pow(dot_rv, SHINE) * attenuation);
+                *final_color = vec_add(*final_color, specular);
+            }
 		}
 	}
 }
 
+/**
+ * @brief Traces a single ray and computes the color at the intersection point.
+ * @param ray The ray to trace.
+ * @param scene Pointer to the scene.
+ * @return The computed color vector.
+ */
 static t_vec	trace_pixel(t_ray ray, t_scene *scene)
 {
 	t_hit_point hit;
@@ -157,11 +194,18 @@ static t_vec	trace_pixel(t_ray ray, t_scene *scene)
 	final_color.y = 0;
 	final_color.z = 0;
 	calc_ambient_light(scene, &final_color, &hit);
-	calc_light(scene, &final_color, &hit);
+	calc_light(scene, &final_color, &hit, &ray);
 	
 	return (final_color);
 }
 
+/**
+ * @brief Traces multiple subpixels for anti-aliasing and averages the colors.
+ * @param scene Pointer to the scene.
+ * @param x The x-coordinate of the pixel.
+ * @param y The y-coordinate of the pixel.
+ * @return The averaged color vector.
+ */
 static t_vec trace_subpixels(t_scene *scene, int x, int y)
 {
 	t_ray	ray;
@@ -190,11 +234,9 @@ static t_vec trace_subpixels(t_scene *scene, int x, int y)
 }
 
 /**
- * Traces the scene by filling the image buffer with test data.
- *
- * @param scene Pointer to scene structure containing image buffer
- *
- * @return 0 on success
+ * @brief Traces the entire scene, rendering each pixel with anti-aliasing and filling the image buffer.
+ * @param scene Pointer to the scene structure containing the image buffer and scene data.
+ * @return 0 on success.
  */
 int	trace_scene(t_scene *scene)
 {

@@ -10,6 +10,7 @@
 # define COLOR_NUM	3
 # define BG_COLOR	0x00000000
 # define AA_SAMPLES	4
+# define SHINE		50
 
 typedef struct s_rgb_color
 {
