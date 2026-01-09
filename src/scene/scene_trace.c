@@ -140,7 +140,7 @@ void	calc_light(t_scene *scene, t_vec *final_color, t_hit_point *hit)
 	}
 }
 
-static uint32_t	trace_pixel(t_ray ray, t_scene *scene)
+static t_vec	trace_pixel(t_ray ray, t_scene *scene)
 {
 	t_hit_point hit;
 	t_vec		final_color;
@@ -151,7 +151,7 @@ static uint32_t	trace_pixel(t_ray ray, t_scene *scene)
 	min_plane_t(scene->plane, &ray, &hit);
 	// min_cylinder_t(scene->cyl, &ray, &hit);
 	if (hit.min_t == DBL_MAX)
-		return BG_COLOR;
+		return ((t_vec){0, 0, 0});
 
 	final_color.x = 0;
 	final_color.y = 0;
@@ -159,7 +159,34 @@ static uint32_t	trace_pixel(t_ray ray, t_scene *scene)
 	calc_ambient_light(scene, &final_color, &hit);
 	calc_light(scene, &final_color, &hit);
 	
-	return (to_mlx_color(&final_color));
+	return (final_color);
+}
+
+static t_vec trace_subpixels(t_scene *scene, int x, int y)
+{
+	t_ray	ray;
+	t_vec	sum_color;
+	int		grid_size;
+	int		sx;
+	int		sy;
+	double	subx;
+	double	suby;
+
+	grid_size = (int)sqrt(AA_SAMPLES);
+	vec_assign(&sum_color, 0, 0, 0);
+	sx = -1;
+	while (++sx < grid_size)
+	{
+		sy = -1;
+		while (++sy < grid_size)
+		{
+			subx = x + (sx + 0.5) / grid_size;
+			suby = y + (sy + 0.5) / grid_size;
+			ray = generate_ray(scene, subx, suby);
+			sum_color = vec_add(sum_color, trace_pixel(ray, scene));
+		}
+	}
+	return (sum_color);
 }
 
 /**
@@ -171,21 +198,25 @@ static uint32_t	trace_pixel(t_ray ray, t_scene *scene)
  */
 int	trace_scene(t_scene *scene)
 {
-	t_ray		ray;
-	int			x;
-	int			y;
-	
-	y = 0;
-	while (y < (int)scene->height)
-	{
-		x = 0;
-		while (x < (int)scene->width)
-		{
-			ray = generate_ray(scene, x, y);
-			scene->image[y * scene->width + x] = trace_pixel(ray, scene);
-			x++;
-		}
-		y++;
+    int x;
+    int y;
+    t_vec sum_color;
+    t_vec avg_color;
+
+    y = 0;
+    while (y < (int)scene->height)
+    {
+        x = 0;
+        while (x < (int)scene->width)
+        {
+			sum_color = trace_subpixels(scene, x, y);
+			avg_color.x = sum_color.x / AA_SAMPLES;
+			avg_color.y = sum_color.y / AA_SAMPLES;
+			avg_color.z = sum_color.z / AA_SAMPLES;
+            scene->image[y * scene->width + x] = to_mlx_color(&avg_color);
+            x++;
+        }
+        y++;
 	}
 	return (0);
 }

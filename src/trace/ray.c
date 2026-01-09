@@ -48,7 +48,7 @@ static t_cam_basis	get_cam_basis(t_camera *cam)
  *
  * @return Structure with px and py
  */
-static t_pixel_offset	get_pixel_offset(t_scene *scene, int x, int y)
+static t_pixel_offset	get_pixel_offset(t_scene *scene, double x, double y)
 {
 	t_pixel_offset	off;
 	double			aspect;
@@ -56,8 +56,8 @@ static t_pixel_offset	get_pixel_offset(t_scene *scene, int x, int y)
 
 	aspect = (double)scene->width / (double)scene->height;
 	fov_rad = scene->camera->fov * M_PI / 180.0;
-	off.px = (2 * ((x + 0.5) / scene->width) - 1) * tan(fov_rad / 2) * aspect;
-	off.py = (1 - 2 * ((y + 0.5) / scene->height)) * tan(fov_rad / 2);
+	off.px = (2 * (x / scene->width) - 1) * tan(fov_rad / 2) * aspect;
+	off.py = (1 - 2 * (y / scene->height)) * tan(fov_rad / 2);
 	return (off);
 }
 
@@ -68,7 +68,7 @@ static t_pixel_offset	get_pixel_offset(t_scene *scene, int x, int y)
  *
  * @return Camera basis structure with forward, right, and up vectors
  */
-t_ray	generate_ray(t_scene *scene, int x, int y)
+t_ray	generate_ray(t_scene *scene, double x, double y)
 {
 	t_ray			ray;
 	t_cam_basis		basis;

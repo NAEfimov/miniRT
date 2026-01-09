@@ -5,10 +5,11 @@
 # include <stdint.h>
 # include "libft.h"
 
-# define WIDTH		256
-# define HEIGHT		256
+# define WIDTH		512
+# define HEIGHT		512
 # define COLOR_NUM	3
-# define BG_COLOR	0x22222222
+# define BG_COLOR	0x00000000
+# define AA_SAMPLES	4
 
 typedef struct s_rgb_color
 {

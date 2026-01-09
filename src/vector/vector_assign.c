@@ -9,12 +9,11 @@
  *
  * @return The resulting vector
  */
-t_vec vec_assign(double x, double y, double z)
+void	vec_assign(t_vec *vec, double x, double y, double z)
 {
-    t_vec result;
-
-    result.x = x;
-    result.y = y;
-    result.z = z;
-    return result;
+	if (!vec)
+		return ;
+	vec->x = x;
+	vec->y = y;
+	vec->z = z;
 }
