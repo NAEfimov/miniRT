@@ -57,9 +57,12 @@ SRCS	:= main.c \
 			utils/print/print_uint32.c \
 			utils/color/color.c \
 			vector/vector_add.c \
+			vector/vector_assign.c \
+        	vector/vector_copy.c \
         	vector/vector_cross.c \
         	vector/vector_dot.c \
         	vector/vector_length.c \
+        	vector/vector_multiply.c \
         	vector/vector_normalize.c \
         	vector/vector_scalar.c \
         	vector/vector_squared_length.c \

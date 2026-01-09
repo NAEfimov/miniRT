@@ -8,6 +8,7 @@
 # define WIDTH		256
 # define HEIGHT		256
 # define COLOR_NUM	3
+# define BG_COLOR	0x22222222
 
 typedef struct s_rgb_color
 {
@@ -65,6 +66,14 @@ typedef struct s_cylinder
 	double	height;
 	t_vec	color;
 }	t_cylinder;
+
+typedef struct s_hit_point
+{
+	double	min_t;
+	t_vec	point;
+	t_vec	normal;
+	t_vec	obj_color;
+}	t_hit_point;
 
 typedef struct s_scene
 {
