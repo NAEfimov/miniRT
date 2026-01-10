@@ -36,13 +36,8 @@ static double get_nearest_t(double a, double b, double discrim)
 
 	t1 = (-b - discrim) / (2.0 * a);
 	t2 = (-b + discrim) / (2.0 * a);
-	if (t1 > 0 && t2 > 0)
-		return (t1 < t2 ? t1 : t2);
-	if (t1 > 0)
-		return (t1);
-	if (t2 > 0)
-		return (t2);
-	return (-1);
+	
+	return (min_pos_value(t1, t2));
 }
 
 /**
@@ -63,4 +58,28 @@ double hit_sphere(t_ray ray, t_sphere *sphere)
 	if (discrim < 0)
 		return (-1);
 	return (get_nearest_t(abc[0], abc[1], sqrt(discrim)));
+}
+
+/**
+ * Returns the smallest positive value between two numbers.
+ *
+ * @param a	First number
+ * @param b	Second number
+ *
+ * @return	The smaller positive value, or -1 if both values are nefative
+ */
+double min_pos_value(double a, double b)
+{
+	if (a > 0 && b > 0)
+	{
+		if (a < b)
+			return (a);
+		else
+			return (b);
+	}
+	if (a > 0)
+		return (a);
+	else if (b > 0)
+		return (b);
+	return (-1);
 }

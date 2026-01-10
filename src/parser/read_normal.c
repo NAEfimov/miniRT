@@ -1,7 +1,7 @@
 #include "parser/read.h"
 #include <math.h>
 
-#define EPSILON	1e-6
+#define EPSILON	0.001
 
 static int	is_normalized(t_vec *vec);
 

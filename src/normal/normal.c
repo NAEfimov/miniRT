@@ -1,3 +1,4 @@
+#include "trace/trace.h"
 #include "normal/normal.h"
 #include "vector/vector.h"
 
@@ -15,6 +16,43 @@ t_vec sphere_normal(t_vec point, t_sphere *sphere)
 
     normal = vec_sub(point, sphere->coord);
     return (vec_nrm(normal));
+}
+
+/**
+ * Calculates the normal vector at the intersection point on a cylinder.
+ * 
+ * @param point The intersection point.
+ * @param ray Pointer to the ray that hit the cylinder.
+ * @param cyl Pointer to the cylinder structure.
+ * 
+ * @return The normalized normal vector.
+ */
+t_vec cylinder_normal(t_vec point, t_cylinder *cyl)
+{
+    t_vec	axis_point;
+    double	dist_to_bottom;
+    double	dist_to_top;
+    double	proj;
+    t_vec	to_point;
+
+    to_point = vec_sub(point, cyl->coord);
+    proj = vec_dot(to_point, cyl->normal);
+    
+    // Check if hit point is on bottom or top cap
+    dist_to_bottom = fabs(proj + cyl->height * 0.5);
+    dist_to_top = fabs(proj - cyl->height * 0.5);
+    
+    // If very close to bottom cap
+    if (dist_to_bottom < 0.0001)
+        return (cyl->normal);
+    
+    // If very close to top cap
+    if (dist_to_top < 0.0001)
+        return (cyl->normal);
+    
+    // Hit on the body - calculate radial normal
+    axis_point = vec_add(cyl->coord, vec_scl(cyl->normal, proj));
+    return (vec_nrm(vec_sub(point, axis_point)));
 }
 
 /**

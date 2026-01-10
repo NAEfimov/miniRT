@@ -12,6 +12,7 @@ SRCS_D	:= ./src
 SRCS	:= main.c \
 			figures/plane.c\
 			figures/sphere.c\
+			figures/cylinder.c\
 			trace/ray.c \
 			scene/scene_clean.c \
 			scene/scene_draw.c \
@@ -67,7 +68,9 @@ SRCS	:= main.c \
         	vector/vector_scalar.c \
         	vector/vector_squared_length.c \
         	vector/vector_substract.c \
-			normal/normal.c
+			normal/normal.c \
+			light/light.c \
+			hit/hit.c
 
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))
