@@ -46,22 +46,20 @@ static t_vec	trace_subpixels(t_scene *scene, int x, int y)
 	t_ray	ray;
 	t_vec	sum_color;
 	int		grid_size;
-	int		sx;
-	int		sy;
-	double	subx;
-	double	suby;
+	int		s_xy[2];
+	double	sub_xy[2];
 
 	grid_size = (int)sqrt(AA_SAMPLES);
 	vec_assign(&sum_color, 0, 0, 0);
-	sx = -1;
-	while (++sx < grid_size)
+	s_xy[0] = -1;
+	while (++s_xy[0] < grid_size)
 	{
-		sy = -1;
-		while (++sy < grid_size)
+		s_xy[1] = -1;
+		while (++s_xy[1] < grid_size)
 		{
-			subx = x + (sx + 0.5) / grid_size;
-			suby = y + (sy + 0.5) / grid_size;
-			ray = generate_ray(scene, subx, suby);
+			sub_xy[0] = x + (s_xy[0] + 0.5) / grid_size;
+			sub_xy[1] = y + (s_xy[1] + 0.5) / grid_size;
+			ray = generate_ray(scene, sub_xy[0], sub_xy[1]);
 			sum_color = vec_add(sum_color, trace_pixel(ray, scene));
 		}
 	}
