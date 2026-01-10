@@ -8,7 +8,7 @@
  *
  * @return      Intersection distance t (>0 if hit, -1 otherwise).
  */
-double hit_plane(t_ray ray, t_plane *plane)
+double	hit_plane(t_ray ray, t_plane *plane)
 {
 	double	denom;
 	t_vec	diff;

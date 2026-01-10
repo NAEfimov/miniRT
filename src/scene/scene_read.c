@@ -29,7 +29,6 @@ int	read_scene(t_scene *scene, char *fname)
 	fd = open_file(fname);
 	if (init_scene(scene))
 		return (1);
-
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -41,19 +40,19 @@ int	read_scene(t_scene *scene, char *fname)
 	scene->line = NULL;
 	ft_putstr_fd("\n", 0);
 	print_scene(scene);
-
 	close(fd);
 	return (0);
 }
 
 /**
- * Initializes the scene structure with default values and allocates image buffer.
+ * Initializes the scene structure with default values and allocates image
+ * buffer.
  *
  * @param scene Pointer to scene structure to initialize
  *
  * @return 0 on success, 1 on failure (memory allocation error)
  */
-static int init_scene(t_scene *scene)
+static int	init_scene(t_scene *scene)
 {
 	scene->height = HEIGHT;
 	scene->width = WIDTH;

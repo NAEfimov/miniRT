@@ -8,7 +8,7 @@
  * @param sphere Pointer to the sphere structure
  * @param abc    Array to store coefficients [a, b, c]
  */
-static void get_sphere_coeffs(t_ray ray, t_sphere *sphere, double abc[3])
+static void	get_sphere_coeffs(t_ray ray, t_sphere *sphere, double abc[3])
 {
 	t_vec	oc;
 	double	radius;
@@ -29,14 +29,13 @@ static void get_sphere_coeffs(t_ray ray, t_sphere *sphere, double abc[3])
  *
  * @return Nearest positive t, or -1 if no valid intersection
  */
-static double get_nearest_t(double a, double b, double discrim)
+static double	get_nearest_t(double a, double b, double discrim)
 {
-	double t1;
-	double t2;
+	double	t1;
+	double	t2;
 
 	t1 = (-b - discrim) / (2.0 * a);
 	t2 = (-b + discrim) / (2.0 * a);
-	
 	return (min_pos_value(t1, t2));
 }
 
@@ -48,7 +47,7 @@ static double get_nearest_t(double a, double b, double discrim)
  *
  * @return       t value for intersection, or -1 if no intersection
  */
-double hit_sphere(t_ray ray, t_sphere *sphere)
+double	hit_sphere(t_ray ray, t_sphere *sphere)
 {
 	double	abc[3];
 	double	discrim;
@@ -68,7 +67,7 @@ double hit_sphere(t_ray ray, t_sphere *sphere)
  *
  * @return	The smaller positive value, or -1 if both values are nefative
  */
-double min_pos_value(double a, double b)
+double	min_pos_value(double a, double b)
 {
 	if (a > 0 && b > 0)
 	{

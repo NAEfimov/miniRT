@@ -9,10 +9,12 @@ HEADERS	:= -I ./include \
 LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a -ldl -lglfw -pthread -lm
 
 SRCS_D	:= ./src
-SRCS	:= main.c \
-			figures/plane.c\
-			figures/sphere.c\
-			figures/cylinder.c\
+SRCS	:=	main.c \
+			figures/plane.c \
+			figures/sphere.c \
+			figures/cylinder.c \
+			figures/cylinder_caps.c \
+			figures/cylinder_body.c \
 			trace/ray.c \
 			scene/scene_clean.c \
 			scene/scene_draw.c \
@@ -70,7 +72,8 @@ SRCS	:= main.c \
         	vector/vector_substract.c \
 			normal/normal.c \
 			light/light.c \
-			hit/hit.c
+			hit/hit.c \
+			hit/hits_any_object.c
 
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))
