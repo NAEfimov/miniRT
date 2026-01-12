@@ -1,0 +1,120 @@
+#include "light/light.h"
+#include "hit/hit.h"
+
+/**
+ * Calculates and adds the ambient light contribution to the final color.
+ * 
+ * @param scene Pointer to the scene.
+ * @param final_color Pointer to the final color vector to modify.
+ * @param hit Pointer to the hit point.
+ */
+void	calc_ambient_light(t_scene *scene, t_vec *final_color, t_hit_point *hit)
+{
+	t_vec	ambient;
+
+	if (scene->a_light)
+	{
+		ambient = vec_scl(scene->a_light->color, scene->a_light->ratio);
+		*final_color = vec_add(*final_color, vec_mul(ambient, hit->obj_color));
+	}
+}
+
+/**
+ * Calculates the diffuse lighting component using Lambert's cosine law.
+ * This component represents the amount of light scattered in all directions
+ * from the surface, proportional to the angle between the surface normal
+ * and the light direction.
+ * 
+ * @param scene Pointer to the scene.
+ * @param fnl_color Pointer to the final color vector to modify.
+ * @param hit Pointer to the hit point.
+ * @param ph_light Pointer to the Phong lighting structure containing light data.
+ */
+static t_vec	calc_diffuse_component(t_scene *scene,
+				t_hit_point *hit, t_phong_light *ph_light)
+{
+	t_vec	diffuse;
+	t_vec	null_vec;
+
+	vec_assign(&null_vec, 0, 0, 0);
+	ph_light->attenuation = 1.0 / (ph_light->l_dist * ph_light->l_dist);
+	ph_light->dot_nl = vec_dot(hit->normal, ph_light->l_dir);
+	if (ph_light->dot_nl > 0)
+	{
+		diffuse = vec_scl(scene->light->color, scene->light->brigh
+				* ph_light->dot_nl);
+		return (vec_mul(diffuse, hit->obj_color));
+	}
+	return (null_vec);
+}
+
+/**
+ * Calculates the specular lighting component using the Phong reflection model.
+ * This component represents the shiny highlights on the surface, based on
+ * the reflection of light towards the viewer.
+ * 
+ * @param scene Pointer to the scene.
+ * @param fnl_color Pointer to the final color vector to modify.
+ * @param hit Pointer to the hit point.
+ * @param ray Pointer to the viewing ray.
+ * @param ph_light Pointer to the Phong lighting structure containing light data.
+ */
+static t_vec	calc_specular_component(t_scene *scene,
+				t_hit_point *hit, t_ray *ray, t_phong_light *ph_light)
+{
+	t_vec	view_dir;
+	t_vec	reflect_dir;
+	t_vec	specular;
+	t_vec	null_vec;
+
+	vec_assign(&null_vec, 0, 0, 0);
+	view_dir = vec_nrm(vec_sub(ray->origin, hit->point));
+	reflect_dir = vec_sub(vec_scl(hit->normal, 2 * ph_light->dot_nl),
+			ph_light->l_dir);
+	ph_light->dot_rv = vec_dot(reflect_dir, view_dir);
+	if (ph_light->dot_rv > 0)
+	{
+		specular = vec_scl(scene->light->color, scene->light->brigh
+				* pow(ph_light->dot_rv, SHINE) * ph_light->attenuation);
+		return (specular);
+	}
+	return (null_vec);
+}
+
+/**
+ * Calculates and adds diffuse and specular lighting contributions to the
+ * final color.
+ * 
+ * @param scene Pointer to the scene.
+ * @param fnl_color Pointer to the final color vector to modify.
+ * @param hit Pointer to the hit point.
+ * @param ray Pointer to the viewing ray.
+ */
+
+void	calc_phong_light(t_scene *scene, t_vec *fnl_color, t_hit_point *hit,
+			t_ray *ray)
+{
+	t_phong_light	ph_light;
+	t_vec			diffuse;
+	t_vec			specular;
+
+	if (scene->light)
+	{
+		ph_light.l_dir = vec_sub(scene->light->coord, hit->point);
+		ph_light.l_dist = vec_len(ph_light.l_dir);
+		ph_light.l_dir = vec_nrm(ph_light.l_dir);
+		ph_light.eps = fmax(0.001, ph_light.l_dist * 0.0001);
+		ph_light.sh_ray.origin = vec_add(hit->point, vec_scl(hit->normal,
+					ph_light.eps));
+		ph_light.sh_ray.direction = ph_light.l_dir;
+		if (!hits_any_object(scene, ph_light.sh_ray, ph_light.l_dist))
+		{
+			ph_light.attenuation = 1.0 / (ph_light.l_dist * ph_light.l_dist);
+			ph_light.dot_nl = vec_dot(hit->normal, ph_light.l_dir);
+			diffuse = calc_diffuse_component(scene, hit, &ph_light);
+			*fnl_color = vec_add(*fnl_color, diffuse);
+			specular = calc_specular_component(scene, hit, ray, &ph_light);
+			*fnl_color = vec_add(*fnl_color, specular);
+		}
+	}
+}

@@ -20,7 +20,7 @@ int	cheack_commas(char *str)
 	if (!str)
 		return (1);
 	res = 0;
-	while(*str)
+	while (*str)
 	{
 		if (*str == COMMA_CHAR)
 			++res;

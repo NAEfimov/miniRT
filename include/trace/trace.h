@@ -23,6 +23,6 @@ typedef struct s_pixel_offset
 	double	py;
 }	t_pixel_offset;
 
-t_ray	generate_ray(t_scene *scene, int x, int y);
+t_ray	generate_ray(t_scene *scene, double x, double y);
 
 #endif
