@@ -30,20 +30,22 @@ void	calc_ambient_light(t_scene *scene, t_vec *final_color, t_hit_point *hit)
  * @param hit Pointer to the hit point.
  * @param ph_light Pointer to the Phong lighting structure containing light data.
  */
-static void	calc_diffuse_component(t_scene *scene, t_vec *fnl_color,
+static t_vec	calc_diffuse_component(t_scene *scene,
 				t_hit_point *hit, t_phong_light *ph_light)
 {
 	t_vec	diffuse;
+	t_vec	null_vec;
 
+	vec_assign(&null_vec, 0, 0, 0);
 	ph_light->attenuation = 1.0 / (ph_light->l_dist * ph_light->l_dist);
 	ph_light->dot_nl = vec_dot(hit->normal, ph_light->l_dir);
 	if (ph_light->dot_nl > 0)
 	{
-		// diffuse = vec_scl(scene->light->color, scene->light->brigh * ph_light->dot_nl * ph_light->attenuation);
 		diffuse = vec_scl(scene->light->color, scene->light->brigh
 				* ph_light->dot_nl);
-		*fnl_color = vec_add(*fnl_color, vec_mul(diffuse, hit->obj_color));
+		return (vec_mul(diffuse, hit->obj_color));
 	}
+	return (null_vec);
 }
 
 /**
@@ -57,13 +59,15 @@ static void	calc_diffuse_component(t_scene *scene, t_vec *fnl_color,
  * @param ray Pointer to the viewing ray.
  * @param ph_light Pointer to the Phong lighting structure containing light data.
  */
-static void	calc_specular_component(t_scene *scene, t_vec *fnl_color,
+static t_vec	calc_specular_component(t_scene *scene,
 				t_hit_point *hit, t_ray *ray, t_phong_light *ph_light)
 {
 	t_vec	view_dir;
 	t_vec	reflect_dir;
 	t_vec	specular;
+	t_vec	null_vec;
 
+	vec_assign(&null_vec, 0, 0, 0);
 	view_dir = vec_nrm(vec_sub(ray->origin, hit->point));
 	reflect_dir = vec_sub(vec_scl(hit->normal, 2 * ph_light->dot_nl),
 			ph_light->l_dir);
@@ -72,8 +76,9 @@ static void	calc_specular_component(t_scene *scene, t_vec *fnl_color,
 	{
 		specular = vec_scl(scene->light->color, scene->light->brigh
 				* pow(ph_light->dot_rv, SHINE) * ph_light->attenuation);
-		*fnl_color = vec_add(*fnl_color, specular);
+		return (specular);
 	}
+	return (null_vec);
 }
 
 /**
@@ -90,6 +95,8 @@ void	calc_phong_light(t_scene *scene, t_vec *fnl_color, t_hit_point *hit,
 			t_ray *ray)
 {
 	t_phong_light	ph_light;
+	t_vec			diffuse;
+	t_vec			specular;
 
 	if (scene->light)
 	{
@@ -104,8 +111,10 @@ void	calc_phong_light(t_scene *scene, t_vec *fnl_color, t_hit_point *hit,
 		{
 			ph_light.attenuation = 1.0 / (ph_light.l_dist * ph_light.l_dist);
 			ph_light.dot_nl = vec_dot(hit->normal, ph_light.l_dir);
-			calc_diffuse_component(scene, fnl_color, hit, &ph_light);
-			calc_specular_component(scene, fnl_color, hit, ray, &ph_light);
+			diffuse = calc_diffuse_component(scene, hit, &ph_light);
+			*fnl_color = vec_add(*fnl_color, diffuse);
+			specular = calc_specular_component(scene, hit, ray, &ph_light);
+			*fnl_color = vec_add(*fnl_color, specular);
 		}
 	}
 }

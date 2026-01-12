@@ -1,9 +1,10 @@
-#include <float.h>
+//#include <float.h>
 #include "main.h"
 #include "utils/color/color.h"
 #include "vector/vector.h"
 #include "light/light.h"
 #include "hit/hit.h"
+#define DBL_MAX 1.7976931348623157e+308
 
 /**
  * Traces a single ray and computes the color at the intersection point.
