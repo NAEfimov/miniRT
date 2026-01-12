@@ -25,7 +25,6 @@ void	min_sphere_t(t_list	*current, t_ray *ray, t_hit_point *hit)
 			hit->min_t = t;
 			hit->point = vec_add(ray->origin, vec_scl(ray->direction, t));
 			hit->normal = sphere_normal(hit->point, sph);
-			// Flip normal if we're hitting from inside the sphere
 			oc = vec_sub(ray->origin, sph->coord);
 			if (vec_dot(oc, oc) < (sph->diameter * 0.5 * sph->diameter * 0.5))
 				hit->normal = vec_scl(hit->normal, -1.0);
@@ -57,7 +56,6 @@ void	min_plane_t(t_list	*current, t_ray *ray, t_hit_point *hit)
 			hit->min_t = t;
 			hit->point = vec_add(ray->origin, vec_scl(ray->direction, t));
 			hit->normal = pln->normal;
-			// Flip normal if it points away from the ray (two-sided plane)
 			if (vec_dot(hit->normal, ray->direction) > 0)
 				hit->normal = vec_scl(hit->normal, -1.0);
 			hit->obj_color = pln->color;

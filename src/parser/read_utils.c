@@ -2,7 +2,6 @@
 #include "parser/parse.h"
 #include "libft.h"
 
-#define COMMA_CHAR	','
 #define COMMAS_NUM	2
 
 /**
@@ -13,7 +12,7 @@
  * @return 0 if valid, 1 if invalid
  *
  */
-int	cheack_commas(char *str)
+int	check_commas(char *str)
 {
 	int	res;
 
@@ -22,7 +21,7 @@ int	cheack_commas(char *str)
 	res = 0;
 	while (*str)
 	{
-		if (*str == COMMA_CHAR)
+		if (*str == ',')
 			++res;
 		++str;
 	}

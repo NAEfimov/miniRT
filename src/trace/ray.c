@@ -18,7 +18,6 @@ static t_cam_basis	get_cam_basis(t_camera *cam)
 	t_vec		temp_right;
 
 	basis.forward = vec_nrm(cam->orient);
-	// Pick a world_up that is NOT parallel to forward to avoid degeneracy
 	world_up.x = 0.0;
 	world_up.y = 1.0;
 	world_up.z = 0.0;
@@ -28,10 +27,8 @@ static t_cam_basis	get_cam_basis(t_camera *cam)
 		world_up.y = 0.0;
 		world_up.z = 1.0;
 	}
-	// Right-handed basis: right = up x forward
 	temp_right = vec_crs(world_up, basis.forward);
 	basis.right = vec_nrm(temp_right);
-	// Up = forward x right
 	basis.up = vec_nrm(vec_crs(basis.forward, basis.right));
 	return (basis);
 }

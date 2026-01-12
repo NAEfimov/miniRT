@@ -16,9 +16,9 @@ int	read_color(t_vec *color, char *word)
 	char		**words;
 	t_rgb_color	c;
 
-	if (!color || !word || cheack_commas(word))
+	if (!color || !word || check_commas(word))
 		return (1);
-	words = ft_split(word, VEC_DELIMETER);
+	words = ft_split(word, ',');
 	if (!words)
 		return (1);
 	if (split_size(words) != 3

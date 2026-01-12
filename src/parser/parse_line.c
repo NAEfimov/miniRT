@@ -27,8 +27,6 @@ void	parse_line(t_scene *scene, char *line)
 	}
 	if (words[0])
 	{
-		// Print line
-		// printf("LINE: '%s'\n", line);
 		parse_scene_element(scene, words);
 	}
 	clean_words(words);

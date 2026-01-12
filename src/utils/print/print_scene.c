@@ -21,7 +21,6 @@ void	print_scene(t_scene *scene)
 	print_camera(scene->camera);
 	print_ambient_light(scene->a_light);
 	print_light(scene->light);
-	// Print lists if needed, but for brevity, just count
 	printf("Spheres: %d\n", ft_lstsize(scene->sphere));
 	printf("Planes: %d\n", ft_lstsize(scene->plane));
 	printf("Cylinders: %d\n\n", ft_lstsize(scene->cyl));

@@ -11,7 +11,7 @@ int	read_color(t_vec *color, char *word);
 int	read_normal(t_vec *norm, char *word);
 int	read_vec(t_vec *vec, char *word);
 
-int	cheack_commas(char *str);
+int	check_commas(char *str);
 int	read_sign(char **pp);
 
 #endif

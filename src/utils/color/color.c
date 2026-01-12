@@ -35,9 +35,7 @@ uint32_t	to_mlx_color(t_vec *color)
 	g = (uint8_t)round(clamp(color->y) * 255.0);
 	b = (uint8_t)round(clamp(color->z) * 255.0);
 	a = 255;
-	// Pack bytes: R G B A
 	return ((a << 24) | (b << 16) | (g << 8) | r);
-	// return ((r << 24) | (g << 16) | (b << 8) | a);
 }
 
 /**

@@ -19,17 +19,13 @@ void	parse_light(t_scene *scene, char **words)
 {
 	t_light	r;
 
-	// Check if ambient light already exists, and there are only 2 arguments
 	if (scene->light || split_size(words) != L_ARGS_NUM)
 		syntax_err(scene, words);
-	// Try to read r_bright and color
 	if (read_vec(&r.coord, words[1]) || read_double(&r.brigh, words[2])
 		|| read_color(&r.color, words[3]))
 		syntax_err(scene, words);
-	// Check r_bright for limits
 	if (r.brigh < MIN_RATIO || r.brigh > MAX_RATIO)
 		syntax_err(scene, words);
-	// Allocate a_light and initialise values
 	scene->light = malloc(sizeof(t_light));
 	if (!scene->light)
 		malloc_err(scene, words);

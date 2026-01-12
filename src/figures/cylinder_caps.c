@@ -52,10 +52,8 @@ double	hit_cylinder_caps(t_ray ray, t_cylinder *cyl)
 	denom = vec_dot(cyl->normal, ray.direction);
 	if (fabs(denom) > 1e-6)
 	{
-		// Bottom cap
 		cap_ctr = vec_sub(cyl->coord, vec_scl(cyl->normal, cyl->height * 0.5));
 		t_bottom = hit_cylinder_cap(ray, cyl, cap_ctr, denom);
-		// Top cap
 		cap_ctr = vec_add(cyl->coord, vec_scl(cyl->normal, cyl->height * 0.5));
 		t_top = hit_cylinder_cap(ray, cyl, cap_ctr, denom);
 	}
