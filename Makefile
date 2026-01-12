@@ -81,8 +81,10 @@ OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))
 all: libmlx libft $(NAME)
 
 libmlx:
-	@echo "Building lbmlx..."
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+	@if ! [ -d "$(LIBMLX)" ]; then \
+	git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX); \
+	cmake $(LIBMLX) -B $(LIBMLX)/build 2>&1 && make -C $(LIBMLX)/build -j4 2>&1;\
+	fi
 
 libft:
 	@echo "Building libft..."
@@ -106,7 +108,7 @@ fclean: clean mlxclean
 	$(MAKE) -C $(LIBFT) fclean
 
 mlxclean:
-	@rm -rf $(LIBMLX)/build
+	@rm -rf $(LIBMLX)
 
 re: clean all
 
