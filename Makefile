@@ -1,11 +1,10 @@
 NAME	:= miniRT
 CFLAGS	:= -Wextra -Wall -Werror -O3
-LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft
 
-HEADERS	:= -I ./include \
-		   -I $(LIBMLX)/include \
-		   -I $(LIBFT)/include
+HEADERS	:=	-I ./include \
+			-I /usr/include \
+			-I $(LIBFT)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a -ldl -lglfw -pthread -lm
 
 SRCS_D	:= ./src
@@ -80,12 +79,6 @@ OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))
 
 all: libmlx libft $(NAME)
 
-libmlx:
-	@if ! [ -d "$(LIBMLX)" ]; then \
-	git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX); \
-	cmake $(LIBMLX) -B $(LIBMLX)/build 2>&1 && make -C $(LIBMLX)/build -j4 2>&1;\
-	fi
-
 libft:
 	@echo "Building libft..."
 	$(MAKE) -C $(LIBFT)
@@ -106,9 +99,6 @@ clean:
 fclean: clean mlxclean
 	@rm -rf $(NAME)
 	$(MAKE) -C $(LIBFT) fclean
-
-mlxclean:
-	@rm -rf $(LIBMLX)
 
 re: clean all
 
