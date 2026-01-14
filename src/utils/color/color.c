@@ -35,6 +35,7 @@ uint32_t	to_mlx_color(t_vec *color)
 	b = (uint8_t)round(clamp(color->z) * 255.0);
 	return ((r << 16) | (g << 8) | b);
 }
+
 /**
  * Converts RGB color values (0.0-1.0) to t_rgb_color structure.
  *
