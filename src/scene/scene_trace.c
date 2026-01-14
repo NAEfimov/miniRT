@@ -83,6 +83,8 @@ int	trace_scene(t_scene *scene)
 	t_vec	sum_color;
 	t_vec	avg_color;
 
+	if (!scene->camera)
+		return (0);
 	y = 0;
 	while (y < (int)scene->height)
 	{
