@@ -1,11 +1,12 @@
 NAME	:= miniRT
 CFLAGS	:= -Wextra -Wall -Werror -O3
 LIBFT	:= ./lib/libft
+MLXFLAGS := -lmlx -lXext -lX11
 
 HEADERS	:=	-I ./include \
 			-I /usr/include \
 			-I $(LIBFT)/include
-LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a -ldl -lglfw -pthread -lm
+LIBS	:=	$(LIBFT)/libft.a -lm
 
 SRCS_D	:= ./src
 SRCS	:=	main.c \
@@ -77,10 +78,9 @@ SRCS	:=	main.c \
 OBJS_D	:= ./build
 OBJS	:= $(patsubst %.c,$(OBJS_D)/%.o,$(SRCS))
 
-all: libmlx libft $(NAME)
+all: libft $(NAME)
 
 libft:
-	@echo "Building libft..."
 	$(MAKE) -C $(LIBFT)
 
 $(OBJS_D)/%.o: $(SRCS_D)/%.c
@@ -88,18 +88,17 @@ $(OBJS_D)/%.o: $(SRCS_D)/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	@echo "Linking miniRT..."
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBS) $(HEADERS) $(MLXFLAGS) -o $(NAME)
 	@echo "miniRT built successfully!"
 
 clean:
 	@rm -rf $(OBJS_D)
 	$(MAKE) -C $(LIBFT) clean
 
-fclean: clean mlxclean
+fclean: clean
 	@rm -rf $(NAME)
 	$(MAKE) -C $(LIBFT) fclean
 
 re: clean all
 
-.PHONY: all, clean, fclean, re, libmlx, mlxclean
+.PHONY: all, clean, fclean, re
